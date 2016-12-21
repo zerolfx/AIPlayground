@@ -23,16 +23,12 @@
         </form>
         </div>
         {% if error_message %}
-        <div class="row">
         <div class="alert alert-danger" role="alert">
           {{ error_message }}
         </div>
-        </div>
         {% elif message %}
-        <div class="row">
         <div class="alert alert-success" role="alert">
           {{ message }}
-        </div>
         </div>
         {% endif %}
       </div>

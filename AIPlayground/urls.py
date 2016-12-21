@@ -18,10 +18,13 @@ from django.contrib import admin
 
 from core.views import home_view
 from account.views import login_register, logout
+from problem.views import problist_view, problem_view
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', home_view),
     url(r'^login/', login_register, name='login'),
-    url(r'^logout/', logout)
+    url(r'^logout/', logout),
+    url(r'^problist/', problist_view, name='problist'),
+    url(r'^problem/(\d+)/', problem_view, name='problem')
 ]

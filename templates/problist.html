@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>Status</th>
+            <th>Standing</th>
+            <th>Likes</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr> {% for problem in problem_list %}
+            <th scope="row">{{ problem.id }}</th>
+            <td a href="#">{{ problem.title }}</td>
+            <td>{{ problem.submissions }} Submissions</td>
+            <td>View Standing</td>
+            <td>{{ problem.likes }} Votes</td>
+        {% endfor %} </tr>
+    </tbody>
+</table>
+
+{% endblock %}

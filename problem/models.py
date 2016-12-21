@@ -27,6 +27,9 @@ class Problem(models.Model):
     status = models.CharField('Status', max_length=1, choices=STATUS_CHOICES)
     likes = models.PositiveIntegerField('Likes', default=0)
 
+    time_limit = models.IntegerField('Time Limit (ms)', default=1000)
+    memory_limit = models.IntegerField('Memory Limit (MB)', default=512)
+    program_limit = models.IntegerField('Program Limit (KB)', default=128)
     description = models.TextField('Description')
     input = models.TextField('Input')
     output = models.TextField('Output')
