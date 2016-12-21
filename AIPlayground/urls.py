@@ -24,7 +24,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', home_view),
     url(r'^login/', login_register, name='login'),
-    url(r'^logout/', logout),
+    url(r'^logout/', logout, name='logout'),
     url(r'^problist/', problist_view, name='problist'),
     url(r'^problem/(\d+)/', problem_view, name='problem')
 ]
