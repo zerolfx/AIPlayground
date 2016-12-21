@@ -21,4 +21,4 @@ def login_register(request):
 
 def logout(request):
     auth_logout(request)
-    redirect('/')
+    return redirect('/')
