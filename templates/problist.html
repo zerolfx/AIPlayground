@@ -14,7 +14,7 @@
     <tbody>
         <tr> {% for problem in problem_list %}
             <th scope="row">{{ problem.id }}</th>
-            <td a href="#">{{ problem.title }}</td>
+            <td><a href="{% url 'problem' problem.id %}">{{ problem.title }}</a></td>
             <td>{{ problem.submissions }} Submissions</td>
             <td>View Standing</td>
             <td>{{ problem.likes }} Votes</td>
