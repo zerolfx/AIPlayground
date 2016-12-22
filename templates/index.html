@@ -6,7 +6,7 @@
         <h1>What is AI Playground?</h1>
         <p class="lead mb-2">AI Playground is a platform where you can compete with the most brilliant artificial brains all over the world. You can also challenge AI with your own human brains. It will be more interesting than you think about. Come on! QAQ</p>
         <div class="row pt-2">
-        <form class="form" action="{% url 'login' %}" method="post">
+        <form class="form" action="{{ object.get_absolute_url }}" method="post">
           {% csrf_token %}
           <div class="col-lg-4">
             <div class="form-group"><input class="form-control form-control-lg" name="username" type="text" placeholder="Username"></div>

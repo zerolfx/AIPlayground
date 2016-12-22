@@ -1,12 +1,12 @@
 from django.shortcuts import render, redirect
 from .form import validator, ProfileForm
 from django.contrib.auth import authenticate, login, logout as auth_logout
+from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_protect
-from core.views import home_view
 
 
 @csrf_protect
-def login_register(request):
+def home(request):
     if request.method == 'POST':
         data = dict()
         validator_result = validator(request.POST)
@@ -16,20 +16,26 @@ def login_register(request):
             user = authenticate(username=request.POST['username'], password=request.POST['password'])
             login(request, user)
             data['message'] = validator_result['message']
-        return home_view(request, data)
+            if request.GET.get('next'):
+                return redirect(request.GET['next'])
+        return render(request, 'index.html', data)
+    else:
+        return render(request, 'index.html')
 
 
 # TODO add message
+@login_required
 def settings_profile(request):
-    user = request.user
+    user_profile = request.user.userprofile
     if request.method == 'POST':
         form = ProfileForm(request.POST)
         if form.is_valid():
-            user.userprofile.email = form.cleaned_data.get('email')
-            user.userprofile.save()
+            user_profile.email = form.cleaned_data.get('email')
+            user_profile.save()
+        return render(request, 'settings.html', {'form': form})
     else:
-        form = ProfileForm(instance=user.userprofile, initial={
-            'email': user.userprofile.email
+        form = ProfileForm(instance=user_profile, initial={
+            'email': user_profile.email
         })
     return render(request, 'settings.html', {'form': form})
 
