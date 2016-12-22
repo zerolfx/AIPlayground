@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .form import validator
+from .form import validator, ProfileForm
 from django.contrib.auth import authenticate, login, logout as auth_logout
 from django.views.decorators.csrf import csrf_protect
 from core.views import home_view
@@ -17,6 +17,21 @@ def login_register(request):
             login(request, user)
             data['message'] = validator_result['message']
         return home_view(request, data)
+
+
+# TODO add message
+def settings_profile(request):
+    user = request.user
+    if request.method == 'POST':
+        form = ProfileForm(request.POST)
+        if form.is_valid():
+            user.userprofile.email = form.cleaned_data.get('email')
+            user.userprofile.save()
+    else:
+        form = ProfileForm(instance=user.userprofile, initial={
+            'email': user.userprofile.email
+        })
+    return render(request, 'settings.html', {'form': form})
 
 
 def logout(request):

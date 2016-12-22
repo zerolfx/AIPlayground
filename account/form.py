@@ -1,5 +1,18 @@
-from .models import User
-from django.contrib.auth import authenticate, login
+from django import forms
+from .models import User, UserProfile
+from django.contrib.auth import authenticate
+
+
+class ProfileForm(forms.ModelForm):
+    email = forms.EmailField(
+        widget=forms.EmailInput(attrs={'class': 'form-control'}),
+        required=True,
+        max_length=40
+    )
+
+    class Meta:
+        model = UserProfile
+        fields = ['email']
 
 
 def validator(post_data):
@@ -22,7 +35,8 @@ def validator(post_data):
             elif User.objects.filter(username=username).exists():
                 response['error'] = 'username is already exist'
             else:
-                User.objects.create_user(username=username, password=password)
+                new_user = User.objects.create_user(username=username, password=password)
+                UserProfile.objects.create(user=new_user)
                 response['message'] = 'register success'
         elif action_type == 'login':
             login_user = authenticate(username=username, password=password)
