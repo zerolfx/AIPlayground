@@ -21,30 +21,30 @@ def validator(get_data, action_type):
     password = get_data['password']
     if action_type and username and password:
         if len(username) < 4:
-            response['error'] = 'username is too short'
+            response['error'] = 'Username is too short.'
         if len(username) > 20:
-            response['error'] = 'the length of username should not exceed 20'
+            response['error'] = 'The length of username should not exceed 20.'
         if len(password) < 6:
-            response['error'] = 'password is too short'
+            response['error'] = 'Password is too short.'
         if response['error']:
             return response
         if action_type == 'register':
             if forbidden_username_validator(username):
-                response['error'] = 'username is reserved'
+                response['error'] = 'Username already exists.'
             elif User.objects.filter(username=username).exists():
-                response['error'] = 'username is already exist'
+                response['error'] = 'Username already exists.'
             else:
                 new_user = User.objects.create_user(username=username, password=password)
                 UserProfile.objects.create(user=new_user)
-                response['message'] = 'register success'
+                response['message'] = 'Register success, redirecting now...'
         elif action_type == 'login':
             login_user = authenticate(username=username, password=password)
             if login_user:
-                response['message'] = 'login success'
+                response['message'] = 'Login success, redirecting now...'
             else:
-                response['error'] = 'invalid login'
+                response['error'] = 'Invalid username or password.'
     if not response['error'] and not response['message']:
-        response['error'] = 'please provide username and password'
+        response['error'] = 'Please enter username and password.'
     return response
 
 
