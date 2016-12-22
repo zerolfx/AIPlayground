@@ -15,11 +15,10 @@ class ProfileForm(forms.ModelForm):
         fields = ['email']
 
 
-def validator(post_data):
+def validator(get_data, action_type):
     response = {'message': [], 'error': []}
-    action_type = post_data['type']
-    username = post_data['username']
-    password = post_data['password']
+    username = get_data['username']
+    password = get_data['password']
     if action_type and username and password:
         if len(username) < 4:
             response['error'] = 'username is too short'

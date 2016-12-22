@@ -3,24 +3,39 @@ from .form import validator, ProfileForm
 from django.contrib.auth import authenticate, login, logout as auth_logout
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_protect
+from django.http import JsonResponse
+
+
+@csrf_protect
+def account_submit(request, type):
+    data = dict()
+    print(request.GET['username'])
+    print(request.GET['password'])
+    validator_result = validator(request.GET, type)
+    if validator_result['error']:
+        data['error'] = 1
+        data['message'] = validator_result['error']
+    else:
+        user = authenticate(username=request.GET['username'], password=request.GET['password'])
+        login(request, user)
+        data['error'] = 0
+        data['message'] = validator_result['message']
+    return JsonResponse(data)
+
+
+@csrf_protect
+def register_view(request):
+    return account_submit(request, 'register')
+
+
+@csrf_protect
+def login_view(request):
+    return account_submit(request, 'login')
 
 
 @csrf_protect
 def home(request):
-    if request.method == 'POST':
-        data = dict()
-        validator_result = validator(request.POST)
-        if validator_result['error']:
-            data['error_message'] = validator_result['error']
-        else:
-            user = authenticate(username=request.POST['username'], password=request.POST['password'])
-            login(request, user)
-            data['message'] = validator_result['message']
-            if request.GET.get('next'):
-                return redirect(request.GET['next'])
-        return render(request, 'index.html', data)
-    else:
-        return render(request, 'index.html')
+    return render(request, 'index.html')
 
 
 # TODO add message

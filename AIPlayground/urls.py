@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
-from account.views import home, logout
+from account.views import home, logout, login_view, register_view
 from problem.views import problist_view, problem_view
 from submission.views import submission_view
 from status.views import status_view
@@ -24,6 +24,8 @@ from status.views import status_view
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', home, name='home'),
+    url(r'^login/', login_view, name='login'),
+    url(r'^register/', register_view, name='register'),
     url(r'^logout/', logout, name='logout'),
     url(r'^problist/', problist_view, name='problist'),
     url(r'^settings/', include('account.urls', namespace='settings', app_name='account')),
