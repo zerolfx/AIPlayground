@@ -19,6 +19,7 @@ from django.contrib import admin
 from core.views import home_view
 from account.views import login_register, logout
 from problem.views import problist_view, problem_view
+from submission.views import submission_view
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -26,5 +27,6 @@ urlpatterns = [
     url(r'^login/', login_register, name='login'),
     url(r'^logout/', logout, name='logout'),
     url(r'^problist/', problist_view, name='problist'),
-    url(r'^problem/(\d+)/', problem_view, name='problem')
+    url(r'^problem/(\d+)/', problem_view, name='problem'),
+    url(r'^submission/(\d+)', submission_view, name='submission')
 ]

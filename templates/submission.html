@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container-fluid my-3">
+    <h3>Submission #{{ submission.id }}</h3>
+
+    <table class="table table-sm">
+        <thead>
+            <th>#</th>
+            <th>Problem</th>
+            <th>Author</th>
+            <th>Language</th>
+            <th>Date</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td scope="row">{{ submission.id }}</td>
+                <td><a href="{% url 'problem' submission.problem.id %}">{{ submission.problem }}</a></td>
+                <td><a href="#">{{ submission.author }}</a></td>
+                <td>{{ submission.get_language_display }}</td>
+                <td>{{ submission.submit_time }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="container-fluid bg-faded py-2 rounded">
+    <h4>Submission Code</h4>
+    <pre class="px-2 py-1">{{ submission.code }}</pre>
+    <p class="text-xs-right text-muted">Length: xxx</p>
+</div>
+
+<div class="container-fluid my-3">
+
+    <table class="table table-sm">
+        <thead>
+            <th>Verdict</th>
+            <th>Running Time</th>
+            <th>Running Memory</th>
+            <th>Rating</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td scope="row">{{ submission.get_verdict_display }}</td>
+                <td>{{ submission.running_time }}</td>
+                <td>{{ submission.running_memory }}</td>
+                <td>{{ submission.rating }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+{% endblock %}
