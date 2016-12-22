@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'account',
     'core',
     'problem',
-    'submission'
+    'submission',
+    'status'
 ]
 
 MIDDLEWARE = [
