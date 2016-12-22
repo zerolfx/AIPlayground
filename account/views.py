@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login, logout as auth_logout
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_protect
 from django.http import JsonResponse
+from django.contrib import messages
 
 
 @csrf_protect
@@ -38,7 +39,6 @@ def home(request):
     return render(request, 'index.html')
 
 
-# TODO add message
 @login_required
 def settings_profile(request):
     user_profile = request.user.userprofile
@@ -47,6 +47,7 @@ def settings_profile(request):
         if form.is_valid():
             user_profile.email = form.cleaned_data.get('email')
             user_profile.save()
+            messages.add_message(request, messages.SUCCESS, 'Your profile was successfully edited.')
         return render(request, 'settings.html', {'form': form})
     else:
         form = ProfileForm(instance=user_profile, initial={
