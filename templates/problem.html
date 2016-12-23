@@ -19,14 +19,14 @@
         <a href="#">Current Standing</a></p>
     </div>
 
-    <div class="container mx-0 px-0 my-2">{{ problem.description }}</div>
+    <div class="container mx-0 px-0 my-2">{{ problem.description|safe }}</div>
     <div class="container mx-0 px-0 my-2">
         <h2>Input</h2>
-        {{ problem.input }}
+        {{ problem.input|safe }}
     </div>
     <div class="container mx-0 px-0 mt-2">
         <h2>Output</h2>
-        {{ problem.output }}
+        {{ problem.output|safe }}
     </div>
 
 </div>
