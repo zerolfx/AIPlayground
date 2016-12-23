@@ -20,6 +20,7 @@ class Submission(models.Model):
         (100, 'Waiting'),
         (101, 'Running'),
         (102, 'Pretest Passed (Past)'),
+        (130, 'Compile Error'),
 
         # Status for AI Playground
         (200, 'Locked'),
@@ -41,13 +42,13 @@ class Submission(models.Model):
     language = models.CharField('Language', max_length=1, choices=LANG_CHOICES)
     code = models.TextField('Code')
     submit_time = models.DateTimeField('Submit Time', auto_now=True)
-    verdict = models.IntegerField('Verdict', choices=VERDICT_STATUS, blank=True)
-    running_time = models.IntegerField('Running Time (ms)', blank=True)
-    running_memory = models.IntegerField('Running Memory (KB)', blank=True)
+    verdict = models.IntegerField('Verdict', choices=VERDICT_STATUS, null=True, blank=True)
+    running_time = models.IntegerField('Running Time (ms)', null=True, blank=True)
+    running_memory = models.IntegerField('Running Memory (KB)', null=True, blank=True)
     score = models.IntegerField('Score', default=0)
     rating = models.IntegerField('Rating', default=0)
 
-    running_data = models.ManyToManyField(Run, 'Running', blank=True)
+    running_data = models.ManyToManyField(Run, 'Running', null=True, blank=True)
 
     def __str__(self):
         return 'Submission #' + str(self.id)
