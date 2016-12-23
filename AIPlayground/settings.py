@@ -11,16 +11,16 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
-# For Celery
-import djcelery
-djcelery.setup_loader()
-BROKER_LOADER = 'django://'
-
-
-
-
+if os.path.isfile('local_settings.py'):
+    from .local_settings import *
+# TODO import above don't take effect
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+# For Celery
+BROKER_URL = 'redis://123.57.161.63:6379/0'
+BROKER_TRANSPORT = 'redis'
+# TODO temporarily using hard code
 
 
 # Quick-start development settings - unsuitable for production
@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'core',
     'problem',
     'submission',
-    'status'
+    'status',
 ]
 
 MIDDLEWARE = [
