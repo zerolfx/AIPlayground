@@ -35,7 +35,7 @@ class Submission(models.Model):
     author = models.ForeignKey(User)
     language = models.CharField('Language', max_length=1, choices=LANG_CHOICES)
     code = models.TextField('Code')
-    submit_time = models.DateTimeField('Submit Time', auto_now=True)
+    submit_time = models.DateTimeField('Submit Time', auto_now_add=True)
     verdict = models.IntegerField('Verdict', choices=VERDICT_STATUS, null=True, blank=True)
     running_time = models.IntegerField('Running Time (ms)', null=True, blank=True)
     running_memory = models.IntegerField('Running Memory (KB)', null=True, blank=True)
