@@ -6,5 +6,5 @@ from problem.models import Problem
 
 def submission_view(request, get_id):
     submission = Submission.objects.get(id=get_id)
-    problem = Problem.objects.get(id=submission.problem_id)
+    problem = submission.problem
     return render(request, 'submission.html', {'problem': problem, 'submission': submission})
