@@ -11,17 +11,15 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
-if os.path.isfile('local_settings.py'):
+# TODO why this import is ugly
+try:
     from .local_settings import *
-# TODO import above don't take effect
+except:
+    pass
+
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-# For Celery
-BROKER_URL = 'redis://123.57.161.63:6379/0'
-BROKER_TRANSPORT = 'redis'
-# TODO temporarily using hard code
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
