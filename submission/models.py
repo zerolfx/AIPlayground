@@ -3,12 +3,6 @@ from problem.models import Problem
 from django.contrib.auth.models import User
 
 
-class Run(models.Model):
-    running_time = models.IntegerField('Running Time (ms)')
-    running_memory = models.IntegerField('Running Memory (KB)')
-    score = models.IntegerField('Gained Score')
-
-
 class Submission(models.Model):
     LANG_CHOICES = (
         ('c', 'C++'),
@@ -48,8 +42,13 @@ class Submission(models.Model):
     score = models.IntegerField('Score', default=0)
     rating = models.IntegerField('Rating', default=0)
 
-    running_data = models.ManyToManyField(Run, 'Running', null=True, blank=True)
-
     def __str__(self):
         return 'Submission #' + str(self.id)
+
+
+class Run(models.Model):
+    submission = models.ForeignKey(Submission)
+    running_time = models.IntegerField('Running Time (ms)')
+    running_memory = models.IntegerField('Running Memory (KB)')
+    score = models.IntegerField('Gained Score')
 

@@ -9,7 +9,7 @@ class Data(models.Model):
 
     input = models.TextField('Input')
     output = models.TextField('Output')
-    explanation = models.TextField('Explanation')
+    explanation = models.TextField('Explanation', blank=True, null=True)
 
     def __str__(self):
         return str(self.id)
@@ -41,4 +41,3 @@ class Problem(models.Model):
     class Meta:
         ordering = ['-id']
 
-# TODO: There is a redirect issue when saving Data through Problem
