@@ -4,7 +4,7 @@ from django.db import models
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
-    email = models.CharField('email', max_length=30, blank=True, unique=True)
+    email = models.CharField('email', max_length=30, blank=True)
     rating = models.IntegerField('rating', default=0)
 
     def __str__(self):

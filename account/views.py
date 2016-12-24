@@ -10,8 +10,6 @@ from django.contrib import messages
 @csrf_protect
 def account_submit(request, type):
     data = dict()
-    print(request.GET['username'])
-    print(request.GET['password'])
     validator_result = validator(request.GET, type)
     if validator_result['error']:
         data['error'] = 1
