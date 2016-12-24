@@ -12,9 +12,9 @@ def compiler(submission_id):
     language = submission.language
     code = submission.code
 
-    lang_setting = lang_settings['code']
+    lang_setting = lang_settings[language]
 
-    judge_base_path = os.path.join(BASE_DIR, "workspace", submission_id)
+    judge_base_path = os.path.join(BASE_DIR, "workspace", str(submission_id))
     os.mkdir(judge_base_path)
     src_path = os.path.join(judge_base_path, lang_setting['src_name'])
     with open(src_path, "w") as f:
@@ -42,6 +42,6 @@ def compiler(submission_id):
             submission.compile_error = "Compile error, info: " + str(compile_result)
     else:
         submission.verdict = '131'
-        with open(os.path.join(judge_base_path, lang_setting['exe_name'])) as f:
+        with open(os.path.join(judge_base_path, lang_setting['exe_name']), "rb") as f:
             submission.compile_result.save(lang_setting['exe_name'], f)
     submission.save()
