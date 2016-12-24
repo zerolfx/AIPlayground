@@ -15,6 +15,7 @@ class Submission(models.Model):
         (101, 'Running'),
         (102, 'Pretest Passed (Past)'),
         (130, 'Compile Error'),
+        (131, 'Compile Finished'),
 
         # Status for AI Playground
         (200, 'Locked'),
@@ -36,6 +37,9 @@ class Submission(models.Model):
     language = models.CharField('Language', max_length=1, choices=LANG_CHOICES)
     code = models.TextField('Code')
     submit_time = models.DateTimeField('Submit Time', auto_now_add=True)
+
+    compile_result = models.FileField('Compile Result', null=True, blank=True)
+    compile_error = models.TextField('Compile Error Message', null=True, blank=True)
     verdict = models.IntegerField('Verdict', choices=VERDICT_STATUS, null=True, blank=True)
     running_time = models.IntegerField('Running Time (ms)', null=True, blank=True)
     running_memory = models.IntegerField('Running Memory (KB)', null=True, blank=True)
