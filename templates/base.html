@@ -1,21 +1,22 @@
 {% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="{% static 'favicon.ico' %}">
-    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-    <link href="{% static 'css/layout.css' %}" rel="stylesheet">
-    <title>{% if title %}{{ title }}{% else %}AI Playground{% endif %}</title>
-  </head>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="icon" href="{% static 'favicon.ico' %}">
+        <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+        <link href="{% static 'css/layout.css' %}" rel="stylesheet">
+        <title>{% if title %}{{ title }}{% else %}AI Playground{% endif %}</title>
+    </head>
 
-  <body>
-    <div class="container">
-      <nav class="navbar navbar-light bg-faded">
+    <body>
+        <div class="container">
+
+        <nav class="navbar navbar-light bg-faded">
         <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"></button>
         <div class="collapse navbar-toggleable-md pl-1" id="navbarResponsive">
         <a class="navbar-brand text-primary" href="{% url 'home' %}">AI Playground</a>
@@ -31,15 +32,15 @@
             </li>
             {% if request.user.is_authenticated %}
             <li class="nav-item dropdown float-xs-right">
-              <a class="nav-link dropdown-toggle text-gray-dark" href="#" id="supportedContentDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                  {{ request.user.username }}
-              </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="supportedContentDropdown">
+                <a class="nav-link dropdown-toggle text-gray-dark" href="#" id="supportedContentDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    {{ request.user.username }}
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="supportedContentDropdown">
                 <a class="dropdown-item" href="#">My Profile</a>
                 <a class="dropdown-item" href="{% url 'settings:profile' %}">Settings</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
-              </div>
+                </div>
             </li>
             {% endif %}
         </ul>
@@ -54,7 +55,7 @@
         </div>
 
         {% endif %}
-      </div>
+        </div>
     </nav>
 
     <div class="modal fade" id="modal-login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -78,15 +79,14 @@
     </div>
 
 
-      {% block content %}
-      {% endblock %}
-
-      <footer class="footer mt-3 mb-2 align-bottom">
-        <p class="text-xs-center"><a class="text-primary" href="{% url 'home' %}">AI Playground 0.1</a>: A Funny ^-^ Project
-        <br>Server time: N/A
-        <br>Proudly powered by Bootstrap V4.
-        <br>For a better layout, recommended on Desktop.</p>
-      </footer>
+    {% block content %}
+    {% endblock %}
+        <footer class="footer mt-3 mb-2 align-bottom">
+            <p class="text-xs-center"><a class="text-primary" href="{% url 'home' %}">AI Playground 0.1</a>: A Funny ^-^ Project
+            <br>Server time: N/A
+            <br>Proudly powered by Bootstrap V4.
+            <br>For a better layout, recommended on Desktop.</p>
+        </footer>
     </div>
 
 
