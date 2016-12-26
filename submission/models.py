@@ -38,7 +38,7 @@ class Submission(models.Model):
     code = models.TextField('Code')
     submit_time = models.DateTimeField('Submit Time', auto_now_add=True)
 
-    compile_result = models.FileField('Compile Result', null=True, blank=True)
+    compile_result = models.FileField('Compile Result', null=True, blank=True, upload_to='compile/')
     compile_error = models.TextField('Compile Error Message', null=True, blank=True)
     verdict = models.IntegerField('Verdict', choices=VERDICT_STATUS, null=True, blank=True)
     running_time = models.IntegerField('Running Time (ms)', null=True, blank=True)
@@ -51,8 +51,11 @@ class Submission(models.Model):
 
 
 class Run(models.Model):
+    round_id = models.IntegerField('#', primary_key=True, auto_created=True)
     submission = models.ForeignKey(Submission)
+    problem = models.ForeignKey(Problem)
     running_time = models.IntegerField('Running Time (ms)')
     running_memory = models.IntegerField('Running Memory (KB)')
     score = models.IntegerField('Gained Score')
+
 

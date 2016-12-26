@@ -8,9 +8,9 @@ from django.contrib import messages
 
 
 @csrf_protect
-def account_submit(request, type):
+def account_submit(request, action_type):
     data = dict()
-    validator_result = validator(request.GET, type)
+    validator_result = validator(request.GET, action_type)
     if validator_result['error']:
         data['error'] = 1
         data['message'] = validator_result['error']

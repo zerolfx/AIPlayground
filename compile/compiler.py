@@ -4,10 +4,12 @@ from AIPlayground.settings import BASE_DIR
 import os
 from submission.models import Submission
 import judger
+import time
 
 
 @app.task
 def compiler(submission_id):
+    time.sleep(10)
     submission = Submission.objects.get(pk=submission_id)
     language = submission.language
     code = submission.code

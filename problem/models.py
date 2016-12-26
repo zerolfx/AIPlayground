@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Data(models.Model):
     STATUS_CHOICES = (
         ('s', 'Sample'),
@@ -34,6 +35,8 @@ class Problem(models.Model):
     input = models.TextField('Input')
     output = models.TextField('Output')
     samples = models.ManyToManyField(Data, 'Samples')
+
+    validator = models.FileField('Validator', upload_to='validator/')
 
     def __str__(self):
         return str(self.id) + ' - ' + self.title

@@ -31,7 +31,7 @@ def validator(get_data, action_type):
         if action_type == 'register':
             if forbidden_username_validator(username):
                 response['error'] = 'Username already exists.'
-            elif User.objects.filter(username=username).exists():
+            elif User.objects.get(username=username).exists():
                 response['error'] = 'Username already exists.'
             else:
                 new_user = User.objects.create_user(username=username, password=password)
