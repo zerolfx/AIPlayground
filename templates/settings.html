@@ -1,36 +1,36 @@
 {% extends 'base.html' %}
 {% block content %}
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3">
-                <div class="list-group">
-                    <a href="{% url 'settings:profile' %}" class="list-group-item active">Profile</a>
-                    <a href="{% url 'settings:profile' %}" class="list-group-item">TODO:PWD</a>
-                </div>
-            </div>
-            <div class="col-md-9">
-                {% if messages %}
-                    {% for message in messages %}
-                        <div class="alert alert-success alert-dismissible">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                            {{ message }}
-                        </div>
-                    {% endfor %}
-                {% endif %}
-                <form method="post" action="{{ request.path }}">
-                    {% csrf_token %}
-                    {% for field in form %}
-                        <div class="form-group">
-                            {{ field.label_tag }}
-                            {{ field }}
-                        </div>
-                        {% for error in field.errors %}
-                            <div class="alert alert-info">{{ error }}</div>    <!-- TODO too fat -->
-                        {% endfor %}
-                    {% endfor %}
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
-            </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="list-group">
+          <a href="{% url 'settings:profile' %}" class="list-group-item active">Profile</a>
+          <a href="{% url 'settings:profile' %}" class="list-group-item">TODO:PWD</a>
         </div>
+      </div>
+      <div class="col-md-9">
+        {% if messages %}
+          {% for message in messages %}
+            <div class="alert alert-success alert-dismissible">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+              {{ message }}
+            </div>
+          {% endfor %}
+        {% endif %}
+        <form method="post" action="{{ request.path }}">
+          {% csrf_token %}
+          {% for field in form %}
+            <div class="form-group">
+              {{ field.label_tag }}
+              {{ field }}
+            </div>
+            {% for error in field.errors %}
+              <div class="alert alert-info">{{ error }}</div>    <!-- TODO too fat -->
+            {% endfor %}
+          {% endfor %}
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
     </div>
+  </div>
 {% endblock %}
