@@ -1,25 +1,25 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<table class="table table-striped">
+  <table class="table table-striped">
     <thead>
-        <tr>
-            <th>#</th>
-            <th>Title</th>
-            <th>Status</th>
-            <th>Standing</th>
-            <th>Likes</th>
-        </tr>
+    <tr>
+      <th>#</th>
+      <th>Title</th>
+      <th>Status</th>
+      <th>Standing</th>
+      <th>Likes</th>
+    </tr>
     </thead>
     <tbody>
-        <tr> {% for problem in problem_list %}
-            <th scope="row">{{ problem.id }}</th>
-            <td><a href="{% url 'problem' problem.id %}">{{ problem.title }}</a></td>
-            <td>{{ problem.submissions }} Submissions</td>
-            <td>View Standing</td>
-            <td>{{ problem.likes }} Votes</td>
-        {% endfor %} </tr>
+    <tr> {% for problem in problem_list %}
+      <th scope="row">{{ problem.id }}</th>
+      <td><a href="{% url 'problem' problem.id %}">{{ problem.title }}</a></td>
+      <td>{{ problem.submissions }} Submissions</td>
+      <td>View Standing</td>
+      <td>{{ problem.likes }} Votes</td>
+    {% endfor %} </tr>
     </tbody>
-</table>
+  </table>
 
 {% endblock %}
