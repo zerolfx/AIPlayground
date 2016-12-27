@@ -1,5 +1,6 @@
 from django.db import models
 from judge.models import Judge
+from django.contrib.auth.models import User
 
 
 class Sample(models.Model):
@@ -21,6 +22,7 @@ class Problem(models.Model):
 
     id = models.IntegerField('#', primary_key=True)
     title = models.CharField('Title', max_length=70)
+    author = models.ForeignKey(User)
     submissions = models.IntegerField('Submissions', default=0)
     status = models.CharField('Status', max_length=1, choices=STATUS_CHOICES)
     likes = models.PositiveIntegerField('Likes', default=0)
@@ -30,10 +32,11 @@ class Problem(models.Model):
     program_limit = models.IntegerField('Program Limit (KB)', default=128)
     combat_type = models.IntegerField('Combat Type', choices=COMBAT_TYPE_CHOICES, default=1)
     description = models.TextField('Description')
-    samples = models.ManyToManyField(Sample)
+    input = models.TextField('Input')
+    output = models.TextField('Output')
+    samples = models.ManyToManyField(Sample, blank=True)
 
-    validator = models.FileField('Validator', upload_to='validator/')
-    judge = models.ForeignKey(Judge)
+    judge = models.ForeignKey(Judge, blank=True)
 
     def __str__(self):
         return str(self.id) + ' - ' + self.title
