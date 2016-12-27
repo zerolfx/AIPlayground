@@ -1,35 +1,35 @@
 from django.db import models
 from problem.models import Problem
+from judge.models import Judge
 from django.contrib.auth.models import User
 
+VERDICT_STATUS = (
+    (100, 'Waiting'),
+    (101, 'Running'),
+    (102, 'Pretest Passed (Past)'),
+    (130, 'Compile Error'),
+    (131, 'Compile Finished'),
+
+    # Status for AI Playground
+    (200, 'Locked'),
+    (201, 'Pretest Passed'),
+    (202, 'Running on Contest'),
+    (400, 'Rejected'),
+
+    # Status for Online Judge
+    (1000, 'Accepted'),
+    (1001, 'Wrong Answer'),
+    (1002, 'Time Limit Exceeded'),
+    (1003, 'Memory Limit Exceeded'),
+    (1004, 'Runtime Error'),
+
+)
 
 class Submission(models.Model):
     LANG_CHOICES = (
         ('c', 'C++'),
         ('j', 'Java'),
         ('p', 'Python')
-    )
-
-    VERDICT_STATUS = (
-        (100, 'Waiting'),
-        (101, 'Running'),
-        (102, 'Pretest Passed (Past)'),
-        (130, 'Compile Error'),
-        (131, 'Compile Finished'),
-
-        # Status for AI Playground
-        (200, 'Locked'),
-        (201, 'Pretest Passed'),
-        (202, 'Running on Contest'),
-        (400, 'Rejected'),
-
-        # Status for Online Judge
-        (1000, 'Accepted'),
-        (1001, 'Wrong Answer'),
-        (1002, 'Time Limit Exceeded'),
-        (1003, 'Memory Limit Exceeded'),
-        (1004, 'Runtime Error'),
-
     )
 
     problem = models.ForeignKey(Problem)
@@ -50,12 +50,28 @@ class Submission(models.Model):
         return 'Submission #' + str(self.id)
 
 
+class Round(models.Model):
+
+    # There can be one or two or many (what?) submissions
+    # Judge can be found in the related problem of the related submission...
+    # A round can be played by one player (typically ACM Problems) or two players (AI Problems)
+    submissions = models.ManyToManyField(Submission)
+
+    # The corresponding runs are automatically attached to the round
+
+    # All result can be found here
+    # It will be formatted as: Player A scored xxx. Player B scored xxx.
+    # The score will be stored temporarily in the submission field when running, and reset when rerunning.
+    result = models.TextField('Judge Result', null=True, blank=True)
+
+
 class Run(models.Model):
-    round_id = models.IntegerField('#', primary_key=True, auto_created=True)
-    submission = models.ForeignKey(Submission)
-    problem = models.ForeignKey(Problem)
-    running_time = models.IntegerField('Running Time (ms)')
-    running_memory = models.IntegerField('Running Memory (KB)')
-    score = models.IntegerField('Gained Score')
+    round = models.ForeignKey(Round)
+    running_time = models.IntegerField('Running Time (ms)', default=0)
+    running_memory = models.IntegerField('Running Memory (KB)', default=0)
+    input = models.FileField('Input', null=True, blank=True)
+    output = models.FileField('Output', null=True, blank=True)
+    answer = models.FileField('Answer', null=True, blank=True)
+    result = models.IntegerField('Judge Result', choices=VERDICT_STATUS, default=100)
 
 

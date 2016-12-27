@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import Problem
-from .models import Data
+from .models import Sample
 
 admin.site.register(Problem)
-admin.site.register(Data)
+admin.site.register(Sample)
