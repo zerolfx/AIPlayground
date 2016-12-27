@@ -1,5 +1,4 @@
 from django.db import models
-from judge.models import Judge
 from django.contrib.auth.models import User
 
 
@@ -34,9 +33,9 @@ class Problem(models.Model):
     description = models.TextField('Description')
     input = models.TextField('Input')
     output = models.TextField('Output')
-    samples = models.ManyToManyField(Sample, blank=True)
+    samples = models.ManyToManyField(Sample)
 
-    judge = models.ForeignKey(Judge, blank=True)
+    # judge = models.ForeignKey(Judge, blank=True)
 
     def __str__(self):
         return str(self.id) + ' - ' + self.title

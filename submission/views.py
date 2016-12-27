@@ -3,7 +3,7 @@ from django.urls import reverse
 from .models import Submission
 from .models import Run
 from problem.models import Problem
-from compile.compiler import compiler
+from core.compiler import compiler
 
 
 def submission_view(request, get_id):

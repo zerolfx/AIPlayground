@@ -9,7 +9,7 @@ from django.conf import settings
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'AIPlayground.settings')
 django.setup()
 
-app = Celery('compiler')
+app = Celery('core')
 
 app.config_from_object('django.conf:settings')
 app.autodiscover_tasks(lambda: settings.INSTALLED_APPS)

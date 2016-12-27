@@ -1,4 +1,4 @@
-lang_settings = {
+LANGUAGE_SETTINGS = {
     'c': {
         "name": "cpp",
         "src_name": "main.cpp",

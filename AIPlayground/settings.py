@@ -45,8 +45,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'account',
-    'core',
-    'judge',
     'problem',
     'submission',
     'status',

@@ -1,6 +1,5 @@
 from django.db import models
 from problem.models import Problem
-from judge.models import Judge
 from django.contrib.auth.models import User
 
 VERDICT_STATUS = (
@@ -24,6 +23,7 @@ VERDICT_STATUS = (
     (1004, 'Runtime Error'),
 
 )
+
 
 class Submission(models.Model):
     LANG_CHOICES = (
@@ -73,5 +73,3 @@ class Run(models.Model):
     output = models.FileField('Output', null=True, blank=True)
     answer = models.FileField('Answer', null=True, blank=True)
     result = models.IntegerField('Judge Result', choices=VERDICT_STATUS, default=100)
-
-
