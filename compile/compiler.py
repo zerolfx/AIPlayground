@@ -9,7 +9,6 @@ import time
 
 @app.task
 def compiler(submission_id):
-    time.sleep(10)
     submission = Submission.objects.get(pk=submission_id)
     language = submission.language
     code = submission.code
@@ -32,7 +31,7 @@ def compiler(submission_id):
                                 args=compile_command[1:],
                                 env=["PATH=" + os.environ["PATH"]],
                                 use_sandbox=False,
-                                use_nobody=False)  # not using nobody
+                                use_nobody=True)  # not using nobody
 
     with open(compiler_output_file) as compile_output_handler:
         compile_output = compile_output_handler.read().strip()
