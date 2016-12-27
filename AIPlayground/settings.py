@@ -33,7 +33,7 @@ SECRET_KEY = '!cyb@x@an9!^enx!6!7d3ii$269%s!ezxbc_as9b*-j1d*e9x@'
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-
+INTERNAL_IPS = ['127.0.0.1']
 
 # Application definition
 
@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'problem',
     'submission',
     'status',
+    'debug_toolbar',
 ]
 
 MIDDLEWARE = [
@@ -59,6 +60,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'AIPlayground.urls'
