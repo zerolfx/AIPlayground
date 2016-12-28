@@ -35,7 +35,7 @@ def validator(get_data, action_type):
                 response['error'] = 'Username already exists.'
             else:
                 new_user = User.objects.create_user(username=username, password=password)
-                UserProfile.objects.create(user=new_user)
+                UserProfile.objects.create(user=new_user, email=get_data['email'])
                 response['message'] = 'Register success, redirecting now...'
         elif action_type == 'login':
             login_user = authenticate(username=username, password=password)
