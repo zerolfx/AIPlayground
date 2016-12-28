@@ -3,6 +3,27 @@ body {
   padding-bottom: 20px;
 }
 
-.navbar {
-  margin-bottom: 20px;
+.bd-navbar {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.bd-pageheader {
+  padding: 2rem 15px;
+  margin-bottom: 1.5rem;
+  color: #cdbfe3;
+  text-align: center;
+  background-color: #563d7c;
+}
+
+.bd-pageheader h1 {
+  font-size: 3rem;
+  font-weight: normal;
+  color: #fff;
+}
+
+.bd-pageheader p {
+  margin-bottom: 0;
+  font-size: 1.25rem;
+  font-weight: 300;
 }
