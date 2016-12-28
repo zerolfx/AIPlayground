@@ -6,15 +6,6 @@ textarea {
   resize: none;
 }
 
-body {
-  padding-top: 5px;
-  padding-bottom: 20px;
-}
-
-p {
-
-}
-
 @media (min-width: 480px) {
 
 }
@@ -184,4 +175,48 @@ p {
   .bd-featurette {
     text-align: left;
   }
+}
+
+.bd-footer {
+  padding: 4rem 0;
+  margin-top: 4rem;
+  font-size: 85%;
+  text-align: center;
+  background-color: #f7f7f7;
+}
+
+.bd-footer a {
+  font-weight: 500;
+  color: #55595c;
+}
+
+.bd-footer a:hover {
+  color: #0275d8;
+}
+
+.bd-footer p {
+  margin-bottom: 0;
+}
+
+@media (min-width: 576px) {
+  .bd-footer {
+    text-align: left;
+  }
+}
+
+.bd-footer-links {
+  padding-left: 0;
+  margin-bottom: 1rem;
+}
+
+.bd-footer-links li {
+  display: inline-block;
+}
+
+.bd-footer-links li + li {
+  margin-left: 1rem;
+}
+
+.modal-dialog {
+  max-width:330px;
 }

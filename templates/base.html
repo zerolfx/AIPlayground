@@ -66,7 +66,7 @@
 
   <div class="modal fade" id="modal-login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
        aria-hidden="true">
-    <div class="modal-dialog" style="max-width:330px">
+    <div class="modal-dialog">
       <div class="modal-content">
         <form class="form" id="user-login-form">
           <div class="modal-body">
@@ -86,7 +86,7 @@
 
   <div class="modal fade" id="modal-register" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
        aria-hidden="true">
-    <div class="modal-dialog" style="max-width:330px">
+    <div class="modal-dialog">
       <div class="modal-content">
         <form class="form" id="user-register-form">
           <div class="modal-body">
@@ -107,11 +107,15 @@
   {% block content %}
   {% endblock %}
 
-  <footer class="footer mt-3 mb-2 align-bottom">
-    <p class="text-xs-center"><a class="text-primary" href="{% url 'home' %}">AI Playground 0.1</a>: A Funny ^-^ Project
-      <br>Server time: N/A
-      <br>Proudly powered by Bootstrap V4.
-      <br>For a better layout, recommended on Desktop.</p>
+  <footer class="bd-footer text-muted">
+    <div class="container">
+      <ul class="bd-footer-links">
+        <li><a href="https://github.com/zerolfx/AIPlayground">GitHub</a></li>
+        <li><a href="{% url 'home' %}">Homepage</a></li>
+      </ul>
+      <p>Team: <a href="https://github.com/ultmaster">@ultmaster</a> and <a href="https://github.com/zerolfx">@zerolfx</a>.</p>
+      <p>Proudly powered by <a href="https://v4-alpha.getbootstrap.com/">Bootstrap v4-alpha</a>.</p>
+    </div>
   </footer>
 </div>
 
