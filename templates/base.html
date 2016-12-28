@@ -53,7 +53,7 @@
                   <a class="nav-link" href="" data-toggle="modal" data-target="#modal-login">Login</a>
                 </li>
                 <li class="nav-item float-lg-right">
-                  <a class="nav-link" href="" data-toggle="modal" data-target="#modal-login">Register</a>
+                  <a class="nav-link" href="" data-toggle="modal" data-target="#modal-register">Register</a>
                 </li>
               </div>
             {% endif %}
@@ -67,18 +67,36 @@
        aria-hidden="true">
     <div class="modal-dialog" style="max-width:330px">
       <div class="modal-content">
-        <form class="form" id="user_login_form">
+        <form class="form" id="user-login-form">
           <div class="modal-body">
             <input type="text" name="username" class="form-control" placeholder="Username" required autofocus>
             <input type="password" name="password" class="form-control" placeholder="Password" required>
-            <div class="text-danger mx-1" style="display:none" id="user_login_error_message">
-            </div>
-            <div class="text-success mx-1" style="display:none" id="user_login_success_message">
+            <div class="text-danger mx-1" style="display:none" id="user-login-message">
             </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             <button type="button" class="btn btn-primary" onclick="login_button_click()">Login</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modal-register" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+       aria-hidden="true">
+    <div class="modal-dialog" style="max-width:330px">
+      <div class="modal-content">
+        <form class="form" id="user-register-form">
+          <div class="modal-body">
+            <input type="email" name="email" class="form-control" placeholder="Email" required autofocus>
+            <input type="text" name="username" class="form-control" placeholder="Username" required>
+            <input type="password" name="password" class="form-control" placeholder="Password" required>
+            <div class="text-danger mx-1" style="display:none" id="user-register-message"></div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" onclick="register_button_click()">Register</button>
           </div>
         </form>
       </div>
@@ -102,25 +120,60 @@
 <script src="//cdn.bootcss.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js"></script>
 
 <script>
-    function login_button_click() {
-        var data = $('#user_login_form').serialize();
-        $.getJSON("{% url 'login' %}", data, function (json) {
-            var user_error_message = $('#user_login_error_message');
-            var user_success_message = $('#user_login_success_message');
-            if (json['error'] == 1) {
-                user_success_message.hide();
-                user_error_message.html(json['message']);
-                user_error_message.show(500);
-            } else {
-                user_error_message.hide();
-                user_success_message.html(json['message']);
-                user_success_message.show(500);
-                setTimeout(function () {
-                    location.reload();
-                }, 1500);
-            }
-        });
-    }
+  function login_button_click() {
+    var data = $('#user-login-form').serialize();
+    $.getJSON("{% url 'login' %}", data, function (json) {
+      var user_message = $('#user-login-message');
+      user_message.hide();
+      user_message.html(json['message']);
+      if (json['error'] == 1) {
+        user_message.removeClass('text-success');
+        user_message.addClass('text-danger');
+        user_message.show(500);
+      } else {
+        user_message.removeClass('text-danger');
+        user_message.addClass('text-success');
+        user_message.show(500);
+        setTimeout(function () {
+            location.reload();
+        }, 1500);
+      }
+    });
+  }
+  function register_button_click() {
+    var data = $('#user-register-form').serialize();
+    $.getJSON("{% url 'register' %}", data, function (json) {
+      var user_message = $('#user-register-message');
+      user_message.hide();
+      user_message.html(json['message']);
+      if (json['error'] == 1) {
+        user_message.removeClass('text-success');
+        user_message.addClass('text-danger');
+        user_message.show(500);
+      } else {
+        user_message.removeClass('text-danger');
+        user_message.addClass('text-success');
+        user_message.show(500);
+        setTimeout(function () {
+            location.reload();
+        }, 1500);
+      }
+    });
+  }
+  var modal_login = $('#modal-login');
+  var modal_register = $('#modal-register');
+  modal_login.on('shown.bs.modal', function() {
+    $(this).find('input:first').focus();
+  });
+  modal_register.on('shown.bs.modal', function() {
+    $(this).find('input:first').focus();
+  });
+  modal_login.keypress(function(e) {
+    if (e.which == 13) login_button_click();
+  });
+  modal_register.keypress(function(e) {
+    if (e.which == 13) register_button_click();
+  });
 </script>
 
 {% block script %}
