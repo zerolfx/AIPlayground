@@ -27,17 +27,17 @@
         </div>
         <div class="collapse navbar-toggleable-sm" id="navbarResponsive">
           <ul class="nav navbar-nav">
-            <li class="nav-item {{ home_active }}">
-              <a class="nav-link" href="{% url 'home' %}">AI Playground</a>
+            <li class="nav-item active">
+              <a class="nav-item nav-link {{ home_active }}" href="{% url 'home' %}">AI Playground</a>
             </li>
-            <li class="nav-item {{ problist_active }}">
-              <a class="nav-link" href="{% url 'problist' %}">Problems</a>
+            <li class="nav-item">
+              <a class="nav-item nav-link {{ problist_active }}" href="{% url 'problist' %}">Problems</a>
             </li>
-            <li class="nav-item {{ status_active }}">
-              <a class="nav-link" href="{% url 'status' %}">Status</a>
+            <li class="nav-item">
+              <a class="nav-item nav-link {{ status_active }}" href="{% url 'status' %}">Status</a>
             </li>
-            <li class="nav-item {{ challenge_active }}">
-              <a class="nav-link" href="#">Challenge</a>
+            <li class="nav-item">
+              <a class="nav-item nav-link {{ challenge_active }}" href="#">Challenge</a>
             </li>
             {% if request.user.is_authenticated %}
               <div class="float-md-right">
