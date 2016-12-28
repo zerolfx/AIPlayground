@@ -1,5 +1,4 @@
 from .celery import app
-from .language_settings import LANGUAGE_SETTINGS
 from .settings import *
 import os
 from submission.models import Submission
@@ -43,4 +42,3 @@ def compiler(submission_id):
         with open(os.path.join(path, setting['exe_name']), "rb") as f:
             submission.compile_result.save(setting['exe_name'], f)
     submission.save()
-    os.system("rm -rf "+src_path)

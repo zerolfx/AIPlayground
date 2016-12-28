@@ -11,3 +11,4 @@ To run background: nohup ... &
 To solve MySQL problem:
 sudo apt-get install libmysqld-dev
 ```
+TODO: Chinese character => ? in submission
