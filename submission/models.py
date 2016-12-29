@@ -7,7 +7,7 @@ VERDICT_STATUS = (
     (101, 'Running'),
     (102, 'Pretest Passed (Past)'),
     (130, 'Compile Error'),
-    (131, 'Compile Finished'),
+    (131, 'Waiting for Judge'),
 
     # Status for AI Playground
     (200, 'Locked'),
@@ -21,6 +21,7 @@ VERDICT_STATUS = (
     (1002, 'Time Limit Exceeded'),
     (1003, 'Memory Limit Exceeded'),
     (1004, 'Runtime Error'),
+    (1005, 'System Error'),
 
 )
 
@@ -38,7 +39,6 @@ class Submission(models.Model):
     code = models.TextField('Code')
     submit_time = models.DateTimeField('Submit Time', auto_now_add=True)
 
-    compile_result = models.FileField('Compile Result', null=True, blank=True, upload_to='compile/')
     compile_error = models.TextField('Compile Error Message', null=True, blank=True)
     verdict = models.IntegerField('Verdict', choices=VERDICT_STATUS, null=True, blank=True)
     running_time = models.IntegerField('Running Time (ms)', null=True, blank=True)
@@ -71,5 +71,8 @@ class Run(models.Model):
     running_memory = models.IntegerField('Running Memory (KB)', default=0)
     input = models.FileField('Input', null=True, blank=True)
     output = models.FileField('Output', null=True, blank=True)
-    answer = models.FileField('Answer', null=True, blank=True)
+    message = models.TextField('Run Result Message', null=True, blank=True)
     result = models.IntegerField('Judge Result', choices=VERDICT_STATUS, default=100)
+
+    def __str__(self):
+        return 'Round ' + str(self.round.id) + ' #' + str(self.id)

@@ -39,6 +39,6 @@ def compiler(submission_id):
             submission.compile_error = "Compile error, info: " + str(compile_result)
     else:
         submission.verdict = '131'
-        with open(os.path.join(path, setting['exe_name']), "rb") as f:
-            submission.compile_result.save(setting['exe_name'], f)
+        # with open(os.path.join(path, setting['exe_name']), "rb") as f:
+            # submission.compile_result.save(setting['exe_name'], f)
     submission.save()

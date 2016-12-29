@@ -40,3 +40,11 @@ JUDGE_NAME = 'judge'
 JUDGE_EXE_CMD = "{exe_path}/{exe_name}"
 
 UNLIMITED = -1
+
+ERROR_FLAG = {
+    1: 1002,
+    2: 1002,
+    3: 1003,
+    4: 1004,
+    5: 1005,
+}
