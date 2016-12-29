@@ -1,8 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
+
+<div class="bd-pageheader">
+  <div class="container">
+    <h1>Submission #{{ submission.id }}</h1>
+    <p class="lead">Solution by {{ submission.author }}</p>
+  </div>
+</div>
 <div class="container">
-  <div class="container-fluid my-3">
-    <h3>Submission #{{ submission.id }}</h3>
 
     <table class="table table-sm">
       <thead>
@@ -10,7 +15,8 @@
       <th>Problem</th>
       <th>Author</th>
       <th>Language</th>
-      <th>Date</th>
+      <th>Status</th>
+      <th>Rating</th>
       </thead>
       <tbody>
       <tr>
@@ -18,37 +24,62 @@
         <td><a href="{% url 'problem' submission.problem.id %}">{{ submission.problem }}</a></td>
         <td><a href="#">{{ submission.author }}</a></td>
         <td>{{ submission.get_language_display }}</td>
-        <td>{{ submission.submit_time }}</td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="container-fluid bg-faded py-2 rounded">
-    <h4>Submission Code</h4>
-    <pre class="px-2 py-1">{{ submission.code }}</pre>
-    <p class="text-xs-right text-muted">Length: xxx</p>
-  </div>
-
-  <div class="container-fluid my-3">
-
-    <table class="table table-sm">
-      <thead>
-      <th>Verdict</th>
-      <th>Running Time</th>
-      <th>Running Memory</th>
-      <th>Rating</th>
-      </thead>
-      <tbody>
-      <tr>
-        <td scope="row">{{ submission.get_verdict_display }}</td>
-        <td>{{ submission.running_time }}</td>
-        <td>{{ submission.running_memory }}</td>
+        <td>{{ submission.get_verdict_display }}</td>
         <td>{{ submission.rating }}</td>
       </tr>
       </tbody>
     </table>
+
+  <pre class="px-2 py-1">{{ submission.code }}</pre>
+  <p class="text-xs-right text-muted"><strong>Code Length:</strong> {{ submission.code | length }} bytes<br/>
+     {{ submission.submit_time }}</p>
+
+<div id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="card">
+    <div class="card-header" role="tab" id="headingOne">
+      <h5 class="mb-0">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Collapsible Group Item #1
+        </a>
+      </h5>
+    </div>
+
+    <div id="collapseOne" class="collapse in" role="tabpanel" aria-labelledby="headingOne">
+      <div class="card-block">
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      </div>
+    </div>
   </div>
+  <div class="card">
+    <div class="card-header" role="tab" id="headingTwo">
+      <h5 class="mb-0">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Collapsible Group Item #2
+        </a>
+      </h5>
+    </div>
+    <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+      <div class="card-block">
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab" id="headingThree">
+      <h5 class="mb-0">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Collapsible Group Item #3
+        </a>
+      </h5>
+    </div>
+    <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
+      <div class="card-block">
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      </div>
+    </div>
+  </div>
+</div>
+
 </div>
 
 {% endblock %}
