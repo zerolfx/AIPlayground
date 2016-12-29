@@ -7,7 +7,7 @@ class UserProfile(models.Model):
     email = models.CharField('Email', max_length=80, blank=True)
     first_name = models.CharField('First Name', max_length=30, blank=True)
     last_name = models.CharField('Last Name', max_length=30, blank=True)
-    birth_date = models.DateField('Birth Date', blank=True)
+    birth_date = models.DateField('Birth Date', blank=True, null=True)
     country = models.CharField('Country', max_length=30, blank=True)
     city = models.CharField('City', max_length=30, blank=True)
     organization = models.CharField('Organization', max_length=80, blank=True)

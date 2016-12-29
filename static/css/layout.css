@@ -280,3 +280,22 @@ pre {
   border: 1px solid #ccc;
   border-radius: 4px;
 }
+
+.set-label {
+  font-size: .8rem;
+  color: #777;
+  font-weight: 500;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.set-label label {
+  margin-bottom: 0;
+}
+
+@media (min-width: 576px) {
+  .set-label {
+    font-size: 1rem;
+    color: #333;
+  }
+}

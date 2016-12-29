@@ -7,12 +7,43 @@ class ProfileForm(forms.ModelForm):
     email = forms.EmailField(
         widget=forms.EmailInput(attrs={'class': 'form-control'}),
         required=True,
-        max_length=40
+        max_length=80
+    )
+    first_name = forms.CharField(
+        widget=forms.TextInput(attrs={'class': 'form-control'}),
+        required=False,
+        max_length=30
+    )
+    last_name = forms.CharField(
+        widget=forms.TextInput(attrs={'class': 'form-control'}),
+        required=False,
+        max_length=30
+    )
+    birth_date = forms.DateField(
+        widget=forms.DateInput(attrs={'class': 'form-control',
+                                      'placeHolder': 'YYYY-MM-DD'}),
+        required=False,
+    )
+    country = forms.CharField(
+        widget=forms.TextInput(attrs={'class': 'form-control'}),
+        required=False,
+        max_length=30
+    )
+    city = forms.CharField(
+        widget=forms.TextInput(attrs={'class': 'form-control'}),
+        required=False,
+        max_length=30
+    )
+    organization = forms.CharField(
+        widget=forms.TextInput(attrs={'class': 'form-control'}),
+        required=False,
+        max_length=80
     )
 
     class Meta:
         model = UserProfile
-        fields = ['email']
+        fields = ['email', 'first_name', 'last_name', 'birth_date',
+                  'country', 'city', 'organization']
 
 
 def validator(get_data, action_type):
