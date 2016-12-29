@@ -31,6 +31,7 @@ def compiler(submission_id):
                                 env=["PATH=" + os.environ["PATH"]],
                                 use_sandbox=False,
                                 use_nobody=False)  # not using nobody
+    print("Compile: " + compile_result)
 
     with open(compiler_output_file) as compile_output_handler:
         compile_output = compile_output_handler.read().strip()
