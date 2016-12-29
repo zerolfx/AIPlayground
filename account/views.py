@@ -45,28 +45,13 @@ def profile_view(request, username):
 def settings_profile(request):
     user_profile = request.user.userprofile
     if request.method == 'POST':
-        form = ProfileForm(request.POST)
+        form = ProfileForm(request.POST, instance=user_profile)
         if form.is_valid():
-            user_profile.email = form.cleaned_data.get('email')
-            user_profile.first_name = form.cleaned_data.get('first_name')
-            user_profile.last_name = form.cleaned_data.get('last_name')
-            user_profile.birth_date = form.cleaned_data.get('birth_date')
-            user_profile.country = form.cleaned_data.get('country')
-            user_profile.city = form.cleaned_data.get('city')
-            user_profile.organization = form.cleaned_data.get('organization')
-            user_profile.save()
+            form.save()
             messages.add_message(request, messages.SUCCESS, 'Your profile was successfully edited.')
         return render(request, 'settings.html', {'form': form})
     else:
-        form = ProfileForm(instance=user_profile, initial={
-            'email': user_profile.email,
-            'first_name': user_profile.first_name,
-            'last_name': user_profile.last_name,
-            'birth_date': user_profile.birth_date,
-            'country': user_profile.country,
-            'city': user_profile.city,
-            'organization': user_profile.organization
-        })
+        form = ProfileForm(instance=user_profile)
     return render(request, 'settings.html', {'form': form})
 
 

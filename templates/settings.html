@@ -30,7 +30,7 @@
           </div>
         {% endfor %}
       {% endif %}
-      <form>
+      <form action="{% url "settings:profile" %}" method="post">
         {% csrf_token %}
         {% for field in form %}
           <div class="form-group row">
@@ -41,7 +41,7 @@
             <div class="alert alert-info">{{ error }}</div>    <!-- TODO too fat -->
           {% endfor %}
         {% endfor %}
-        <button type="button" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
       </form>
     </div>
     <div class="tab-pane fade" id="security" role="tabpanel">bbb</div>

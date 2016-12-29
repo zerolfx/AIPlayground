@@ -4,41 +4,11 @@ from django.contrib.auth import authenticate
 
 
 class ProfileForm(forms.ModelForm):
-    email = forms.EmailField(
-        widget=forms.EmailInput(attrs={'class': 'form-control'}),
-        required=True,
-        max_length=80
-    )
-    first_name = forms.CharField(
-        widget=forms.TextInput(attrs={'class': 'form-control'}),
-        required=False,
-        max_length=30
-    )
-    last_name = forms.CharField(
-        widget=forms.TextInput(attrs={'class': 'form-control'}),
-        required=False,
-        max_length=30
-    )
-    birth_date = forms.DateField(
-        widget=forms.DateInput(attrs={'class': 'form-control',
-                                      'placeHolder': 'YYYY-MM-DD'}),
-        required=False,
-    )
-    country = forms.CharField(
-        widget=forms.TextInput(attrs={'class': 'form-control'}),
-        required=False,
-        max_length=30
-    )
-    city = forms.CharField(
-        widget=forms.TextInput(attrs={'class': 'form-control'}),
-        required=False,
-        max_length=30
-    )
-    organization = forms.CharField(
-        widget=forms.TextInput(attrs={'class': 'form-control'}),
-        required=False,
-        max_length=80
-    )
+    def __init__(self, *args, **kwargs):
+        super(ProfileForm, self).__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.widget.attrs['class'] = 'form-control'
+        self.fields['email'].required = True
 
     class Meta:
         model = UserProfile
