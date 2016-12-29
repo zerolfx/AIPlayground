@@ -1,36 +1,76 @@
 {% extends 'base.html' %}
 {% block content %}
+
+<div class="bd-pageheader">
   <div class="container">
-    <div class="row">
-      <div class="col-md-3">
-        <div class="list-group">
-          <a href="{% url 'settings:profile' %}" class="list-group-item active">Profile</a>
-          <a href="{% url 'settings:profile' %}" class="list-group-item">TODO:PWD</a>
-        </div>
-      </div>
-      <div class="col-md-9">
-        {% if messages %}
-          {% for message in messages %}
-            <div class="alert alert-success alert-dismissible">
-              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-              {{ message }}
-            </div>
-          {% endfor %}
-        {% endif %}
-        <form method="post" action="{{ request.path }}">
-          {% csrf_token %}
-          {% for field in form %}
-            <div class="form-group">
-              {{ field.label_tag }}
-              {{ field }}
-            </div>
-            {% for error in field.errors %}
-              <div class="alert alert-info">{{ error }}</div>    <!-- TODO too fat -->
-            {% endfor %}
-          {% endfor %}
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-      </div>
-    </div>
+    <h1>Settings</h1>
   </div>
+</div>
+
+<div class="container">
+  <ul class="nav nav-tabs mb-2" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" data-toggle="tab" href="#profile" role="tab">Profile</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#security" role="tab">Security</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#notification" role="tab">Notification</a>
+    </li>
+  </ul>
+
+  <div class="tab-content">
+    <div class="tab-pane fade in active" id="profile" role="tabpanel">
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert-success alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            {{ message }}
+          </div>
+        {% endfor %}
+      {% endif %}
+      <form>
+        {% csrf_token %}
+        {% for field in form %}
+          <div class="form-group row">
+            <div class="col-xs-2 col-form-label">{{ field.label_tag }}</div>
+            <div class="col-xs-10">{{ field }}</div>
+          </div>
+          {% for error in field.errors %}
+            <div class="alert alert-info">{{ error }}</div>    <!-- TODO too fat -->
+          {% endfor %}
+        {% endfor %}
+        <button type="button" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+    <div class="tab-pane fade" id="security" role="tabpanel">bbb</div>
+    <div class="tab-pane fade" id="notification" role="tabpanel">ccc</div>
+  </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script>
+  function () {
+    var data = $('#user-login-form').serialize();
+    $.getJSON("{% url 'login' %}", data, function (json) {
+      var user_message = $('#user-login-message');
+      user_message.hide();
+      user_message.html(json['message']);
+      if (json['error'] == 1) {
+        user_message.removeClass('text-success');
+        user_message.addClass('text-danger');
+        user_message.show(500);
+      } else {
+        user_message.removeClass('text-danger');
+        user_message.addClass('text-success');
+        user_message.show(500);
+        setTimeout(function () {
+            location.reload();
+        }, 1500);
+      }
+    });
+  }
+</script>
 {% endblock %}
