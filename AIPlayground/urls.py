@@ -17,7 +17,7 @@ from django.conf import settings
 from django.conf.urls import url, include
 from django.contrib import admin
 
-from account.views import home, logout, login_view, register_view
+from account.views import home, logout, login_view, register_view, profile_view
 from problem.views import problist_view, problem_view
 from submission.views import submission_view, submit
 from status.views import status_view
@@ -33,9 +33,8 @@ urlpatterns = [
     url(r'^problem/(\d+)/', problem_view, name='problem'),
     url(r'^submission/(\d+)', submission_view, name='submission'),
     url(r'^submit/', submit, name='submit'),
-    url(r'^status/', status_view, name='status')
-    # url(r'^profile/()')
-    # TODO: match a user
+    url(r'^status/', status_view, name='status'),
+    url(r'^profile/(.+)/', profile_view, name='profile')
 ]
 
 if settings.DEBUG:
