@@ -1,8 +1,9 @@
 from .celery import app
 from .settings import *
-import os
-from submission.models import Submission
+from core.runner import controller
+from submission.models import Submission, Round
 import judger
+import os
 
 
 @app.task
@@ -19,6 +20,8 @@ def compiler(submission_id):
 
     compile_command = setting['compile_command'].format(src_path=src_path, exe_path=path).split(" ")
     compiler_output_file = os.path.join(path, "compiler.out")
+    submission.verdict = 129
+    submission.save()
     compile_result = judger.run(path=compile_command[0],
                                 in_file="/dev/null",
                                 out_file=compiler_output_file,
@@ -32,13 +35,21 @@ def compiler(submission_id):
     with open(compiler_output_file) as compile_output_handler:
         compile_output = compile_output_handler.read().strip()
     if compile_result['flag'] != 0:
-        submission.verdict = '130'
+        submission.verdict = 130
         if compile_output:
             submission.compile_error = compile_output
         else:
             submission.compile_error = "Compile error, info: " + str(compile_result)
     else:
-        submission.verdict = '131'
-        # with open(os.path.join(path, setting['exe_name']), "rb") as f:
-            # submission.compile_result.save(setting['exe_name'], f)
+        submission.verdict = 131
     submission.save()
+
+    # Starting round
+    if submission.verdict == 131:
+        sublist = list(Submission.objects.filter(problem=submission.problem, verdict=131))
+        for opponent in sublist:
+            round = Round()
+            round.save()
+            round.submissions.add(opponent, submission)
+            round.save()
+            controller(round.id)

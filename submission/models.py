@@ -6,6 +6,7 @@ VERDICT_STATUS = (
     (100, 'Waiting'),
     (101, 'Running'),
     (102, 'Pretest Passed (Past)'),
+    (129, 'Compiling'),
     (130, 'Compile Error'),
     (131, 'Waiting for Judge'),
 
