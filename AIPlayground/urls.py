@@ -34,6 +34,8 @@ urlpatterns = [
     url(r'^submission/(\d+)', submission_view, name='submission'),
     url(r'^submit/', submit, name='submit'),
     url(r'^status/', status_view, name='status')
+    # url(r'^profile/()')
+    # TODO: match a user
 ]
 
 if settings.DEBUG:
