@@ -4,7 +4,7 @@ python manage.py makemigrations
 python manage.py migrate
 ```
 ```
-celery -A core.compiler worker -l debug
+celery -A core worker -l debug
 To run background: nohup ... &
 ```
 ```

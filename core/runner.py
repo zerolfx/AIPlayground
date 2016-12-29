@@ -2,8 +2,10 @@ from .settings import *
 from submission.models import Round, Run
 import shutil
 import judger
+from .celery import app
 
 
+@app.task
 def controller(round_id):
     def copy_files():
         problem_path = os.path.join(PROBLEM_PATH, str(problem.id))
@@ -91,10 +93,12 @@ def controller(round_id):
                 next_step, judge_result_message = f.read().split('\n')[:2]
             current_run.result = ERROR_FLAG[run_result['flag']]
             current_run.message = judge_result_message
-            current_run.save()
             print(next_step, judge_result_message)
             if next_step == 'stop':
+                current_run.result = 1001
+                current_run.save()
                 return
+            current_run.save()
 
 
 
