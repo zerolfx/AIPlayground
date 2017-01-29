@@ -11,12 +11,6 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
-# TODO why this import is ugly
-try:
-    from .local_settings import *
-except:
-    pass
-
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -87,16 +81,10 @@ WSGI_APPLICATION = 'AIPlayground.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
-BROKER_URL = 'redis://123.57.161.63:6379/0'
-BROKER_TRANSPORT = 'redis'
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'aiplay',
-        'USER': 'root',
-        'PASSWORD': 'root',
-        'HOST': '123.57.161.63',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 

@@ -2,7 +2,7 @@ from .celery import app
 from .settings import *
 import os
 from submission.models import Submission
-import judger
+# import judger
 
 
 @app.task
