@@ -21,6 +21,7 @@ from account.views import home, logout, login_view, register_view, profile_view
 from problem.views import problist_view, problem_view
 from submission.views import submission_view, submit
 from status.views import status_view
+from tests.views import vue_test
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -34,7 +35,8 @@ urlpatterns = [
     url(r'^submission/(\d+)', submission_view, name='submission'),
     url(r'^submit/', submit, name='submit'),
     url(r'^status/', status_view, name='status'),
-    url(r'^profile/(.+)/', profile_view, name='profile')
+    url(r'^profile/(.+)/', profile_view, name='profile'),
+    url(r'^test/', vue_test)
 ]
 
 if settings.DEBUG:

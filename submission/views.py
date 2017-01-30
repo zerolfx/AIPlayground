@@ -3,7 +3,6 @@ from django.urls import reverse
 from .models import Submission
 from .models import Run
 from problem.models import Problem
-from core.compiler import compiler
 
 
 def submission_view(request, get_id):
@@ -19,6 +18,5 @@ def submit(request):
     submission.problem = Problem.objects.get(id=int(request.POST['problem_id']))
     submission.author = request.user
     submission.save()
-    compiler.delay(submission.id)
     return HttpResponseRedirect(reverse('submission', args=(str(submission.id), )))
 

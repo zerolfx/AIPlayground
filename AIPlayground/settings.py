@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'submission',
     'status',
     'debug_toolbar',
+    'webpack_loader',
 ]
 
 MIDDLEWARE = [
@@ -131,3 +132,12 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
 # My Addition
 LOGIN_URL = '/'
+
+
+# Webpack Loader
+
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'STATS_FILE': os.path.join(BASE_DIR, 'frontend/webpack-stats.json')
+    }
+}
