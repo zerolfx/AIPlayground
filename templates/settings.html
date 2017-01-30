@@ -49,28 +49,3 @@
   </div>
 </div>
 {% endblock %}
-
-{% block script %}
-<script>
-  function () {
-    var data = $('#user-login-form').serialize();
-    $.getJSON("{% url 'login' %}", data, function (json) {
-      var user_message = $('#user-login-message');
-      user_message.hide();
-      user_message.html(json['message']);
-      if (json['error'] == 1) {
-        user_message.removeClass('text-success');
-        user_message.addClass('text-danger');
-        user_message.show(500);
-      } else {
-        user_message.removeClass('text-danger');
-        user_message.addClass('text-success');
-        user_message.show(500);
-        setTimeout(function () {
-            location.reload();
-        }, 1500);
-      }
-    });
-  }
-</script>
-{% endblock %}
