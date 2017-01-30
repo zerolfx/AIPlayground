@@ -4,184 +4,128 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Starter Template - Materialize</title>
   <link rel="icon" href="{% static 'favicon.ico' %}">
-  <link href="//cdn.bootcss.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" rel="stylesheet">
-  <link href="{% static 'css/layout.css' %}" rel="stylesheet">
 
-  <title>{% if title %}{{ title }}{% else %}AI Playground{% endif %}</title>
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://cdn.bootcss.com/materialize/0.98.0/css/materialize.min.css" rel="stylesheet">
+  <link href="https://fonts.css.network/css?family=Roboto" rel="stylesheet">
 </head>
-
 <body>
+  <nav class="light-blue lighten-1" id="element" role="navigation">
+    <div class="classObject"><a id="logo-container" href="#" class="brand-logo">Logo</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="#">Navbar Link</a></li>
+      </ul>
 
-  <header class="navbar navbar-light navbar-static-top bd-navbar">
+      <ul id="nav-mobile" class="side-nav">
+        <li><a href="#">Navbar Link</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+  <div class="section no-pad-bot" id="index-banner">
     <div class="container">
-      <nav>
-        <div class="clearfix">
-        <button class="navbar-toggler hidden-md-up float-xs-right" type="button" data-toggle="collapse"
-                data-target="#navbarResponsive"
-                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"></button>
-          <a class="navbar-brand hidden-md-up" href="{% url 'home' %}">AI Playground</a>
+      <br><br>
+      <h1 class="header center orange-text">Starter Template</h1>
+      <div class="row center">
+        <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
+      </div>
+      <div class="row center">
+        <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light orange">Get Started</a>
+      </div>
+      <br><br>
+
+    </div>
+  </div>
+
+
+  <div class="container">
+    <div class="section">
+
+      <!--   Icon Section   -->
+      <div class="row">
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center light-blue-text"><i class="material-icons">flash_on</i></h2>
+            <h5 class="center">Speeds up development</h5>
+
+            <p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
+          </div>
         </div>
-        <div class="collapse navbar-toggleable-sm" id="navbarResponsive">
-          <ul class="nav navbar-nav">
-            <li class="nav-item active">
-              <a class="nav-item nav-link {{ home_active }}" href="{% url 'home' %}">AI Playground</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-item nav-link {{ problist_active }}" href="{% url 'problist' %}">Problems</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-item nav-link {{ status_active }}" href="{% url 'status' %}">Status</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-item nav-link {{ challenge_active }}" href="#">Challenge</a>
-            </li>
-            {% if request.user.is_authenticated %}
-              <div class="float-md-right">
-                <li class="nav-item">
-                  <a class="nav-link text-gray-dark" href="{% url 'settings:profile' %}">{{ request.user.username }}</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'logout' %}">Logout</a>
-                </li>
-              </div>
-            {% else %}
-              <div class="float-md-right">
-                <li class="nav-item">
-                  <a class="nav-link" href="" data-toggle="modal" data-target="#modal-login">Login</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="" data-toggle="modal" data-target="#modal-register">Register</a>
-                </li>
-              </div>
-            {% endif %}
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center light-blue-text"><i class="material-icons">group</i></h2>
+            <h5 class="center">User Experience Focused</h5>
+
+            <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center light-blue-text"><i class="material-icons">settings</i></h2>
+            <h5 class="center">Easy to work with</h5>
+
+            <p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <br><br>
+
+    <div class="section">
+
+    </div>
+  </div>
+
+  <footer class="page-footer orange">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Company Bio</h5>
+          <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
+
+
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Settings</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Link 1</a></li>
+            <li><a class="white-text" href="#!">Link 2</a></li>
+            <li><a class="white-text" href="#!">Link 3</a></li>
+            <li><a class="white-text" href="#!">Link 4</a></li>
           </ul>
         </div>
-      </nav>
-    </div>
-  </header>
-
-  <div class="modal fade" id="modal-login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-       aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <form class="form" id="user-login-form">
-          <div class="modal-body">
-            <input type="text" name="username" class="form-control" placeholder="Username" required autofocus>
-            <input type="password" name="password" class="form-control" placeholder="Password" required>
-            <div class="text-danger mx-1" style="display:none" id="user-login-message">
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" onclick="login_button_click()">Login</button>
-          </div>
-        </form>
+        <div class="col l3 s12">
+          <h5 class="white-text">Connect</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Link 1</a></li>
+            <li><a class="white-text" href="#!">Link 2</a></li>
+            <li><a class="white-text" href="#!">Link 3</a></li>
+            <li><a class="white-text" href="#!">Link 4</a></li>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
-
-  <div class="modal fade" id="modal-register" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-       aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <form class="form" id="user-register-form">
-          <div class="modal-body">
-            <input type="email" name="email" class="form-control" placeholder="Email" required autofocus>
-            <input type="text" name="username" class="form-control" placeholder="Username" required>
-            <input type="password" name="password" class="form-control" placeholder="Password" required>
-            <div class="text-danger mx-1" style="display:none" id="user-register-message"></div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" onclick="register_button_click()">Register</button>
-          </div>
-        </form>
+    <div class="footer-copyright">
+      <div class="container">
+      Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
       </div>
-    </div>
-  </div>
-
-  {% block content %}
-  {% endblock %}
-
-  <footer class="bd-footer text-muted">
-    <div class="container">
-      <ul class="bd-footer-links">
-        <li><a href="https://github.com/zerolfx/AIPlayground">GitHub</a></li>
-        <li><a href="{% url 'home' %}">Homepage</a></li>
-      </ul>
-      <p>Team: <a href="https://github.com/ultmaster">@ultmaster</a> and <a href="https://github.com/zerolfx">@zerolfx</a>.</p>
-      <p>Proudly powered by <a href="https://v4-alpha.getbootstrap.com/">Bootstrap v4-alpha</a>.</p>
     </div>
   </footer>
 
 
+  <!--  Scripts -->
+  <script src="https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://cdn.bootcss.com/materialize/0.98.0/js/materialize.min.js"></script>
+  <script src="https://cdn.bootcss.com/vue/2.1.10/vue.min.js"></script>
+  <script src="{% static 'js/init.js' %}"></script>
 
-<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
-<script src="//cdn.bootcss.com/tether/1.4.0/js/tether.min.js"></script>
-<script src="//cdn.bootcss.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js"></script>
-
-<script>
-  function login_button_click() {
-    var data = $('#user-login-form').serialize();
-    $.getJSON("{% url 'login' %}", data, function (json) {
-      var user_message = $('#user-login-message');
-      user_message.hide();
-      user_message.html(json['message']);
-      if (json['error'] == 1) {
-        user_message.removeClass('text-success');
-        user_message.addClass('text-danger');
-        user_message.show(500);
-      } else {
-        user_message.removeClass('text-danger');
-        user_message.addClass('text-success');
-        user_message.show(500);
-        setTimeout(function () {
-            location.reload();
-        }, 1500);
-      }
-    });
-  }
-  function register_button_click() {
-    var data = $('#user-register-form').serialize();
-    $.getJSON("{% url 'register' %}", data, function (json) {
-      var user_message = $('#user-register-message');
-      user_message.hide();
-      user_message.html(json['message']);
-      if (json['error'] == 1) {
-        user_message.removeClass('text-success');
-        user_message.addClass('text-danger');
-        user_message.show(500);
-      } else {
-        user_message.removeClass('text-danger');
-        user_message.addClass('text-success');
-        user_message.show(500);
-        setTimeout(function () {
-            location.reload();
-        }, 1500);
-      }
-    });
-  }
-  var modal_login = $('#modal-login');
-  var modal_register = $('#modal-register');
-  modal_login.on('shown.bs.modal', function() {
-    $(this).find('input:first').focus();
-  });
-  modal_register.on('shown.bs.modal', function() {
-    $(this).find('input:first').focus();
-  });
-  modal_login.keypress(function(e) {
-    if (e.which == 13) login_button_click();
-  });
-  modal_register.keypress(function(e) {
-    if (e.which == 13) register_button_click();
-  });
-</script>
-
-{% block script %}
-{% endblock %}
-</body>
+  </body>
 </html>

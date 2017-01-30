@@ -1,3 +1,7 @@
+template {
+  display: none;
+}
+
 input, button, select, textarea, a {
   outline: none !important;
 }
