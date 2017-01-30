@@ -15,8 +15,9 @@
   <link href="https://fonts.css.network/css?family=Roboto" rel="stylesheet">
 </head>
 <body>
-  <nav class="light-blue lighten-1" id="element" role="navigation">
-    <div class="classObject"><a id="logo-container" href="#" class="brand-logo">Logo</a>
+
+  <nav v-bind:class="classObject" role="navigation" id="example">
+    <div v-bind:class="classObject2"><a id="logo-container" href="#" class="brand-logo">Logo</a>
       <ul class="right hide-on-med-and-down">
         <li><a href="#">Navbar Link</a></li>
       </ul>
@@ -124,7 +125,7 @@
   <!--  Scripts -->
   <script src="https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://cdn.bootcss.com/materialize/0.98.0/js/materialize.min.js"></script>
-  <script src="https://cdn.bootcss.com/vue/2.1.10/vue.min.js"></script>
+  <script src="https://cdn.bootcss.com/vue/2.1.10/vue.js"></script>
   <script src="{% static 'js/init.js' %}"></script>
 
   </body>
