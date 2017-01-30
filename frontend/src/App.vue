@@ -20,7 +20,6 @@
     <ul>
       <li>Simple Tests</li>
       <li>Hard Tests</li>
-      <li>Extreme Tests</li>
     </ul>
   </div>
 </template>
