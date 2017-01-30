@@ -8,56 +8,67 @@
       <h1>What is AI Playground?</h1>
       <p class="lead mb-2">AI Playground is a platform where you can submit your program and compete with others.<br/>
                           You will have fun mindstorming, coding and sharing ideas.</p>
-      <a class="btn btn-outline btn-lg" href="{% url 'problist' %}">Get started</a>
+      <button class="btn btn-outline-primary btn-lg">Get started</button>
     </div>
   </div>
 
-  <div class="bd-featurette">
-    <div class="container">
-      <h2 class="bd-featurette-title">Problems</h2>
-      <p class="lead">Problems for all to explore.</p>
-      <div class="row">
-        <div class="col-sm-6 mb-3">
-          <h4>AI Problems</h4>
-          <p>Interesting AI Problems! Basically, you can submit your program and compete with others.
-            Competitions between AI and AI can be really fierce.
-            And there will be a rating calculated after each round.</p>
-        </div>
-        <div class="col-sm-6 mb-3">
-          <h4>Traditional Problems</h4>
-          <p>There are also many traditional problems, based on standard input and output, using the
-            rule of ACM-ICPC contest. You can practice your programming skills here. What is special, however,
-            is that you can also add your own problem here.</p>
-        </div>
-      </div>
-      <p class="lead">
-        <button class="btn btn-bs btn-outline">Explore problems</button>
-      </p>
-    </div>
+  <div class="row">
+    <div class="col-md-4"><div class="jumbotron bg-faded">
+      <h2>Contest</h2>
+      <p class="lead">Submit your AI program and compete!</p>
+      <a class="btn btn-primary btn-block mb-2" href="{% url 'problist' %}" role="button">Try it &raquo;</a>
+    </div></div>
+
+    <div class="col-md-4"><div class="jumbotron bg-faded">
+      <h2>Challenge</h2>
+      <p class="lead">Are you more clever than those dumb programs?</p>
+      <a class="btn btn-primary btn-block mb-2" href="challenge.php" role="button">Beat it &raquo;</a>
+    </div></div>
+
+    <div class="col-md-4"><div class="jumbotron bg-faded">
+      <h2>Headline</h2>
+      <p class="lead"><strong>[UPD 1 hour ago]</strong> zerol's program has successfully defeated ultmaster, the champion of Gobang. Orz!</p>
+      <a class="btn btn-primary btn-block mb-2" href="status.php" role="button">More news in the air &raquo;</a>
+    </div></div>
   </div>
 
-  <div class="bd-featurette">
-    <div class="container">
-      <h2 class="bd-featurette-title">Community</h2>
-      <p class="lead">Problems for all to explore.</p>
-      <div class="row">
-        <div class="col-sm-6 mb-3">
-          <h4>AI Problems</h4>
-          <p>Interesting AI Problems! Basically, you can submit your program and compete with others.
-            Competitions between AI and AI can be really fierce.
-            And there will be a rating calculated after each round.</p>
-        </div>
-        <div class="col-sm-6 mb-3">
-          <h4>Traditional Problems</h4>
-          <p>There are also many traditional problems, based on standard input and output, using the
-            rule of ACM-ICPC contest. You can practice your programming skills here. What is special, however,
-            is that you can also add your own problem here.</p>
-        </div>
-      </div>
-      <p class="lead">
-        <button class="btn btn-bs btn-outline">Explore problems</button>
-      </p>
-    </div>
-  </div>
+{% endblock %}
+
+{% block script %}
+    <script>
+        function show_message(json) {
+            var user_error_message = $('#user_error_message');
+            var user_success_message = $('#user_success_message');
+            if (json['error'] == 1) {
+                user_success_message.hide();
+                user_error_message.html(json['message']);
+                user_error_message.show(500);
+            } else {
+                user_error_message.hide();
+                user_success_message.html(json['message']);
+                user_success_message.show(500);
+                setTimeout(function() { location.reload(); }, 3000);
+            }
+        }
+
+        $(document).ready(function() {
+            $('#main_login').click(function() {
+                //alert('Hello');
+                var data = $('#user_form').serialize();
+                $.getJSON("{% url 'login' %}", data, function(json) {
+                    show_message(json);
+                    $('#main_login').blur();
+                });
+            });
+            $('#main_register').click(function() {
+                var data = $('#user_form').serialize();
+                $.getJSON("{% url 'register' %}", data, function(json) {
+                    show_message(json);
+                    $('#main_register').blur();
+                });
+            });
+
+        });
+    </script>
 
 {% endblock %}
