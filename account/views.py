@@ -34,7 +34,7 @@ def login_view(request):
 
 @csrf_protect
 def home(request):
-    return render(request, 'index.html', {'home_active': 'active'})
+    return render(request, 'home.html', {'home_active': 'active'})
 
 
 def profile_view(request, username):

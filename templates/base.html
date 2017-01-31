@@ -6,28 +6,20 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
-  <title>Starter Template - Materialize</title>
+  <title>{% if title %}{{ title }}{% else %}AI Playground{% endif %}</title>
+  <!-- TODO: hard coding -->
   <link rel="icon" href="{% static 'favicon.ico' %}">
 
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="https://cdn.bootcss.com/materialize/0.98.0/css/materialize.min.css" rel="stylesheet">
+
+  <!-- FONT -->
   <link href="https://fonts.css.network/css?family=Roboto" rel="stylesheet">
 </head>
 <body>
 
-  <nav v-bind:class="classObject" role="navigation" id="example">
-    <div v-bind:class="classObject2"><a id="logo-container" href="#" class="brand-logo">Logo</a>
-      <ul class="right hide-on-med-and-down">
-        <li><a href="#">Navbar Link</a></li>
-      </ul>
-
-      <ul id="nav-mobile" class="side-nav">
-        <li><a href="#">Navbar Link</a></li>
-      </ul>
-      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
-    </div>
-  </nav>
+  {% include 'navbar.html' %}
   <div class="section no-pad-bot" id="index-banner">
     <div class="container">
       <br><br>
@@ -126,7 +118,9 @@
   <script src="https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://cdn.bootcss.com/materialize/0.98.0/js/materialize.min.js"></script>
   <script src="https://cdn.bootcss.com/vue/2.1.10/vue.js"></script>
+  <script src="{% static 'js/theme/theme-default.js' %}"></script>
   <script src="{% static 'js/init.js' %}"></script>
+  {% block script %}{% endblock %}
 
   </body>
 </html>

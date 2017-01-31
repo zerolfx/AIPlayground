@@ -29,14 +29,18 @@ urlpatterns = [
     url(r'^login/', login_view, name='login'),
     url(r'^register/', register_view, name='register'),
     url(r'^logout/', logout, name='logout'),
-    url(r'^problist/', problist_view, name='problist'),
-    url(r'^settings/', include('account.urls', namespace='settings', app_name='account')),
-    url(r'^problem/(\d+)/', problem_view, name='problem'),
-    url(r'^submission/(\d+)', submission_view, name='submission'),
-    url(r'^submit/', submit, name='submit'),
-    url(r'^status/', status_view, name='status'),
-    url(r'^profile/(.+)/', profile_view, name='profile'),
-    url(r'^test/', vue_test)
+    url(r'^problem/$', home, name='problem'),
+    url(r'^competition/', home, name='competition'),
+    url(r'^board/', home, name='board'),
+    url(r'^sign/', home, name='sign')
+    # url(r'^problist/', problist_view, name='problist'),
+    # url(r'^settings/', include('account.urls', namespace='settings', app_name='account')),
+    # url(r'^problem/(\d+)/', problem_view, name='problem'),
+    # url(r'^submission/(\d+)', submission_view, name='submission'),
+    # url(r'^submit/', submit, name='submit'),
+    # url(r'^status/', status_view, name='status'),
+    # url(r'^profile/(.+)/', profile_view, name='profile'),
+    # url(r'^test/', vue_test)
 ]
 
 if settings.DEBUG:

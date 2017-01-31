@@ -1,16 +1,37 @@
-var vm = new Vue({
-  el: '#example',
+// constants
+SMALL_MAX_WIDTH = 600;
+MED_MAX_WIDTH = 992;
+LOGO_TITLE = 'AI Playground';
+
+// navbar init
+
+var nav = new Vue({
+  delimiters: ['[[', ']]'],  // resolve conflicts
+  el: 'nav',
   data: {
-    classObject: {
-      "light-blue": true,
-      "lighten-1": true
+    navbarStyle: [
+      themeColor.primaryColor
+    ],
+    navbarActive: {
+      home: false,
+      problem: false,
+      competition: false,
+      board: false,
     },
-    classObject2: {
-      "nav-wrapper": true,
-      "container": true
-    },
-    classObject3: {
-      "light-blue": true
+    logoTitle: LOGO_TITLE,
+  },
+  methods: {
+    toggleActive: function (type) {
+      for (var prop in this.navbarActive)
+        this.navbarActive.prop = false;
+      this.navbarActive[type] = true;
     }
   }
 });
+
+// side-nav ready
+(function($) {
+  $(function() {
+    $(".button-collapse").sideNav();
+  });
+})(jQuery);

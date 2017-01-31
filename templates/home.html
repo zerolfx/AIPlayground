@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 {% block content %}
 
   <div class="bd-masthead">
@@ -34,40 +35,7 @@
 {% endblock %}
 
 {% block script %}
-    <script>
-        function show_message(json) {
-            var user_error_message = $('#user_error_message');
-            var user_success_message = $('#user_success_message');
-            if (json['error'] == 1) {
-                user_success_message.hide();
-                user_error_message.html(json['message']);
-                user_error_message.show(500);
-            } else {
-                user_error_message.hide();
-                user_success_message.html(json['message']);
-                user_success_message.show(500);
-                setTimeout(function() { location.reload(); }, 3000);
-            }
-        }
 
-        $(document).ready(function() {
-            $('#main_login').click(function() {
-                //alert('Hello');
-                var data = $('#user_form').serialize();
-                $.getJSON("{% url 'login' %}", data, function(json) {
-                    show_message(json);
-                    $('#main_login').blur();
-                });
-            });
-            $('#main_register').click(function() {
-                var data = $('#user_form').serialize();
-                $.getJSON("{% url 'register' %}", data, function(json) {
-                    show_message(json);
-                    $('#main_register').blur();
-                });
-            });
-
-        });
-    </script>
+<script <script src="{% static 'js/home.js' %}"></script>
 
 {% endblock %}
