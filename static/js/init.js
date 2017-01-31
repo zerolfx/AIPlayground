@@ -9,14 +9,12 @@ var nav = new Vue({
   delimiters: ['[[', ']]'],  // resolve conflicts
   el: 'nav',
   data: {
-    navbarStyle: [
-      themeColor.primaryColor
-    ],
     navbarActive: {
       home: false,
       problem: false,
       competition: false,
       board: false,
+      search: false
     },
     logoTitle: LOGO_TITLE,
   },

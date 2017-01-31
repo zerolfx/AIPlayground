@@ -5,89 +5,86 @@
 <div class="section no-pad-bot" id="index-banner">
   <div class="container">
     <br><br>
-    <h1 class="header center orange-text">Starter Template</h1>
+    <h1 class="header center grey-text text-darken-4">AI Playground</h1>
     <div class="row center">
-      <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
+      <h5 class="header col s12 light">To seek, to code, and to share.</h5>
     </div>
     <div class="row center">
-      <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light orange">Get Started</a>
+      <a href="{% url 'sign' %}" id="download-button" class="btn-large waves-effect waves-light pink">
+        Get Started</a>
     </div>
     <br><br>
 
   </div>
 </div>
-
+<br><br>
 
 <div class="container">
   <div class="section">
 
-    <!--   Icon Section   -->
     <div class="row">
-      <div class="col s12 m4">
+      <div class="col s8 offset-s2 m6 l5">
         <div class="icon-block">
-          <h2 class="center light-blue-text"><i class="material-icons">flash_on</i></h2>
-          <h5 class="center">Speeds up development</h5>
-
-          <p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
+          <h2 class="center indigo-text"><i class="material-icons">assignment</i></h2>
+          <h5 class="center">Traditional Problems</h5>
+          <p class="justify">From a traditional view, yes, this is an <b>Online Judge</b>. You will definitely find some interesting problems here.
+            Judges here are usually friendly. They bear possible errors, and give you the fairest judge result.
+            Hope you have fun and have no frustrating bugs.</p>
         </div>
       </div>
 
-      <div class="col s12 m4">
+      <div class="col s8 offset-s2 m6 l5 offset-l2">
         <div class="icon-block">
-          <h2 class="center light-blue-text"><i class="material-icons">group</i></h2>
-          <h5 class="center">User Experience Focused</h5>
-
-          <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
-        </div>
-      </div>
-
-      <div class="col s12 m4">
-        <div class="icon-block">
-          <h2 class="center light-blue-text"><i class="material-icons">settings</i></h2>
-          <h5 class="center">Easy to work with</h5>
-
-          <p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
+          <h2 class="center indigo-text"><i class="material-icons">group</i></h2>
+          <h5 class="center">Combat Problems</h5>
+          <p class="justify">The most exciting part, however, is <b>combat problems</b>. Usually, these problems do not have a definitely right and wrong.
+            The more score you are gaining, the better. And usually, these problems involve two players or even more play together. So judge
+            will run each of them and find which program seems to be the best.</p>
         </div>
       </div>
     </div>
 
   </div>
-  <br><br>
+
+  <br>
 
   <div class="section">
+    <div class="row">
+      <div class="col s10 offset-s1 m4">
+        <div class="icon-block">
+          <h2 class="center pink-text"><i class="material-icons">public</i></h2>
+          <h5 class="center">Open</h5>
+          <p class="justify">If you want to add a problem to the problem list, why not? As long as you have done a certain number of problems
+            to show you are a <b>real</b> problem settler, you are most welcome to do that. Also, you can hold public or private contests, based
+            on your own problems.</p>
+        </div>
+      </div>
 
+      <div class="col s10 offset-s1 m4">
+        <div class="icon-block">
+          <h2 class="center pink-text"><i class="material-icons">code</i></h2>
+          <h5 class="center">Simpler</h5>
+          <p class="justify">Making coding simpler has always been our dream. In the long history, the choices of packages on online judge is strictly restricted.
+            Well, we decided to change that. You can access the package source, so that you don't have to copy things down from Internet or from
+            some books. We hope that this will be helpful.</p>
+        </div>
+      </div>
+
+      <div class="col s10 offset-s1 m4">
+        <div class="icon-block">
+          <h2 class="center pink-text"><i class="material-icons">trending_up</i></h2>
+          <h5 class="center">Better</h5>
+          <p class="justify">You know what they say - there is the best, but the best is not always the best; there is better; there is always
+            better. The <b>real</b> difference between a traditional online judge and us is that we do not have a so-called 'accepted', That is
+            to say, to be the top of the ranklist, there is always something you can do.</p>
+        </div>
+      </div>
+    </div>
   </div>
+
+  <br><br>
 </div>
 
-{#  <div class="bd-masthead">#}
-{#    <div class="container">#}
-{#      <span class="bd-booticon">AI</span>#}
-{#      <h1>What is AI Playground?</h1>#}
-{#      <p class="lead mb-2">AI Playground is a platform where you can submit your program and compete with others.<br/>#}
-{#                          You will have fun mindstorming, coding and sharing ideas.</p>#}
-{#      <button class="btn btn-outline-primary btn-lg">Get started</button>#}
-{#    </div>#}
-{#  </div>#}
-{##}
-{#  <div class="row">#}
-{#    <div class="col-md-4"><div class="jumbotron bg-faded">#}
-{#      <h2>Contest</h2>#}
-{#      <p class="lead">Submit your AI program and compete!</p>#}
-{#      <a class="btn btn-primary btn-block mb-2" href="{% url 'problist' %}" role="button">Try it &raquo;</a>#}
-{#    </div></div>#}
-{##}
-{#    <div class="col-md-4"><div class="jumbotron bg-faded">#}
-{#      <h2>Challenge</h2>#}
-{#      <p class="lead">Are you more clever than those dumb programs?</p>#}
-{#      <a class="btn btn-primary btn-block mb-2" href="challenge.php" role="button">Beat it &raquo;</a>#}
-{#    </div></div>#}
-{##}
-{#    <div class="col-md-4"><div class="jumbotron bg-faded">#}
-{#      <h2>Headline</h2>#}
-{#      <p class="lead"><strong>[UPD 1 hour ago]</strong> zerol's program has successfully defeated ultmaster, the champion of Gobang. Orz!</p>#}
-{#      <a class="btn btn-primary btn-block mb-2" href="status.php" role="button">More news in the air &raquo;</a>#}
-{#    </div></div>#}
-{#  </div>#}
 
 {% endblock %}
 
