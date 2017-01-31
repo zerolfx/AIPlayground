@@ -1,3 +1,5 @@
+{% load staticfiles %}
+
 <nav v-bind:class="navbarStyle" role="navigation">
   <div class="nav-wrapper container">
     <a id="logo-container" href="{% url 'home' %}" class="brand-logo left hide-on-med-and-down">[[ logoTitle ]]</a>
@@ -12,17 +14,22 @@
     <ul id="slide-out" class="side-nav">
       <li><div class="userView">
         <div class="background">
-          <img src="images/office.jpg">
+          <img src="{% static 'img/style_imagery_bestpractices_4.png' %}" style="width:100%" >
+          <!-- TODO: stupid hard coding -->
         </div>
-        <a href="#!user"><img class="circle" src="images/yuna.jpg"></a>
-        <a href="#!name"><span class="white-text name">John Doe</span></a>
-        <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
+        <a href="#!user"><i class="material-icons">user</i></a><!-- TODO: why is this not working -->
+        <a href="#!name"><span class="name">John Doe</span></a>
+        <a href="#!email"><span class="email">jdandturk@gmail.com</span></a>
       </div></li>
-      <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
-      <li><a href="#!">Second Link</a></li>
+      <li v-bind:class="{active: navbarActive.home}"><a href="{% url 'home' %}">Home</a></li>
+      <li v-bind:class="{active: navbarActive.problem}"><a href="{% url 'problem' %}">Problems</a></li>
+      <li v-bind:class="{active: navbarActive.competition}"><a href="{% url 'competition' %}">Competitions</a></li>
+      <li v-bind:class="{active: navbarActive.board}"><a href="{% url 'board' %}">Board</a></li>
+      {# <li><a class="subheader">Subheader</a></li>#}
+
       <li><div class="divider"></div></li>
-      <li><a class="subheader">Subheader</a></li>
-      <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+      <li><a href="{% url 'sign' %}">Sign Up</a></li>
+      <li><a href="{% url 'sign' %}">Sign In</a></li>
     </ul>
     <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
   </div>

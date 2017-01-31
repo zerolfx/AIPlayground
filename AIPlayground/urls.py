@@ -32,7 +32,8 @@ urlpatterns = [
     url(r'^problem/$', home, name='problem'),
     url(r'^competition/', home, name='competition'),
     url(r'^board/', home, name='board'),
-    url(r'^sign/', home, name='sign')
+    url(r'^sign/', home, name='sign'),
+    url(r'^user/$', home, name='user'),
     # url(r'^problist/', problist_view, name='problist'),
     # url(r'^settings/', include('account.urls', namespace='settings', app_name='account')),
     # url(r'^problem/(\d+)/', problem_view, name='problem'),
