@@ -16,15 +16,17 @@
         </div>
       </nav>
 
+      <!-- TODO: problem, fonts when empty -->
+
       <div class="col s12 m10 offset-m1 l8 offset-l2 sign-form" v-show="signInActive">
-        <form @keyup.enter="signIn">
+        <form id="sign-in-form" @keyup.enter="signIn">
           <div class="input-field">
-            <input id="signinUsername" class="validate" type="text" name="username" />
-            <label for="username" data-error="invalid username">Username</label>
+            <input id="signinUsername" class="validate required" type="text" name="username">
+            <label for="username" data-error="Invalid username.">Username</label>
           </div>
           <div class="input-field">
-            <input id="signinPassword" class="validate" type="password" name="password">
-            <label for="password" data-error="invalid password">Password</label>
+            <input id="signinPassword" class="validate required" type="password" name="password">
+            <label for="password" data-error="Invalid password.">Password</label>
           </div>
         </form>
 
@@ -38,38 +40,29 @@
       </div>
 
       <div class="col s12 m10 offset-m1 l8 offset-l2 sign-form" v-show="signUpActive">
-        <form @keyup.enter="signUp">
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="signupUsername" class="validate" type="text" name="username" />
-              <label for="username" data-error="invalid username">Username</label>
-            </div>
-            <div class="input-field col s6">
-              <input id="signupFirstname" class="validate" type="text" name="firstname" />
-              <label for="firstname" data-error="invalid firstname">First name</label>
-            </div>
-            <div class="input-field col s6">
-              <input id="signupLastname" class="validate" type="text" name="lastname" />
-              <label for="lastname" data-error="invalid lastname">Last name</label>
-            </div>
-            <div class="input-field col s12">
-              <input id="signupEmail" class="validate" type="email" name="email" />
-              <label for="username" data-error="invalid email">Email</label>
-            </div>
-            <div class="input-field col s12">
-              <input id="signupPassword" class="validate" type="password" name="password">
-              <label for="password" data-error="invalid password">Password</label>
-            </div>
-            <div class="input-field col s12">
-              <input id="signupPasswordRepeat" class="validate" type="password" name="passwordRepeat">
-              <label for="passwordRepeat" data-error="password is not identical">Repeat Password</label>
-            </div>
+        <form id="sign-up-form" @keyup.enter="signUp">
+          <div class="input-field">
+            <input id="signupUsername" class="validate required" type="text" name="username" />
+            <label for="username" data-error="Invalid username.">Username</label>
+          </div>
+          <div class="input-field">
+            <input id="signupEmail" class="validate" type="email" name="email" />
+            <label for="username" data-error="Invalid email.">Email</label>
+          </div>
+          <div class="input-field">
+            <input id="signupPassword" class="validate" type="password" name="password">
+            <label for="password" data-error="Invalid password.">Password</label>
+          </div>
+          <div class="input-field">
+            <input @blur="passwordRepeatValidate"
+            id="signupPasswordRepeat" class="validate" type="password" name="passwordRepeat">
+            <label for="passwordRepeat" data-error="Password is not identical.">Repeat Password</label>
           </div>
         </form>
 
         <div class="row">
           <div class="col s12 center">
-            <button class="btn-form-submit-col4 btn-large pink waves-effect waves-light" @click="signIn">
+            <button class="btn-form-submit-col4 btn-large pink waves-effect waves-light" @click="signUp">
               Sign Up
             </button>
           </div>
@@ -84,6 +77,6 @@
 
 {% block script %}
 
-<script <script src="{% static 'js/user.js' %}?"></script>
+<script <script src="{% static 'js/user.js' %}"></script>
 
 {% endblock %}
