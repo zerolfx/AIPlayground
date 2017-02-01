@@ -110,8 +110,18 @@ textarea.materialize-textarea:focus:not([readonly])
 
 
 /* A inverse tab */
-.tab
-  width: 30%
+.tabs
+  display: -webkit-flex
+  display: -ms-flexbox
+  display: flex
+
+.tabs .tab
+  -webkit-flex-grow: 1
+  -ms-flex-positive: 1
+  flex-grow: 1
+
+.tabs .tab a
+  padding: 0 12px
 
 .tabs.tabs-transparent .tab a,
 .tabs.tabs-transparent .tab.disabled a,

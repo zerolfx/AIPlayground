@@ -3,9 +3,9 @@
 nav.toggleActive('user');
 
 function signinValidate() {
-  var usernameBox = $("#signinUsername");
-  var passwordBox = $("#signinPassword");
-  console.log(usernameBox.value);
+  var usernameBox = document.getElementById("signinUsername");
+  var passwordBox = document.getElementById("signinPassword");
+  console.log("hello");
 }
 
 var signContainer = new Vue({

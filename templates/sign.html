@@ -6,36 +6,71 @@
 {% block content %}
 <div class="section">
   <div class="container" id="sign-container">
-    <nav class="transparent z-depth-0">
-      <div class="nav-content">
-        <ul class="tabs tabs-transparent">
-          <li class="tab"><a @click="toggle('in')" :class="signInActive">Sign In</a></li>
-          <li class="tab"><a @click="toggle('up')" :class="signUpActive">Sign Up</a></li>
-        </ul>
-      </div>
-    </nav>
-
-    <div class="row signInActive">
-      <form class="col s12 l9">
-        <div class="row">
-          <div class="input-field col s12">
-            <input id="signinUsername" class="validate" type="email" name="username">
-            <label for="username">Username</label>
-          </div>
+    <div class="row">
+      <nav class="transparent z-depth-0 col s12 m10 offset-m1 l8 offset-l2">
+        <div class="nav-content">
+          <ul class="tabs tabs-transparent">
+            <li class="tab"><a @click="toggle('in')" :class="signInActive">Sign In</a></li>
+            <li class="tab"><a @click="toggle('up')" :class="signUpActive">Sign Up</a></li>
+          </ul>
         </div>
-        <div class="row">
-          <div class="input-field col s12">
-            <input id="signinPassword" type="password" name="password">
-            <label for="password">Password</label>
-          </div>
-        </div>
-      </form>
+      </nav>
 
-      <div class="col s12 l9">
+      <div class="col s12 m10 offset-m1 l8 offset-l2 sign-form" v-show="signInActive">
+        <form @keyup.enter="signIn">
+          <div class="input-field">
+            <input id="signinUsername" class="validate" type="text" name="username" />
+            <label for="username" data-error="invalid username">Username</label>
+          </div>
+          <div class="input-field">
+            <input id="signinPassword" class="validate" type="password" name="password">
+            <label for="password" data-error="invalid password">Password</label>
+          </div>
+        </form>
+
         <div class="row">
-          <div class="col s12">
+          <div class="col s12 center">
             <button class="btn-form-submit-col4 btn-large pink waves-effect waves-light" @click="signIn">
               Sign In
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col s12 m10 offset-m1 l8 offset-l2 sign-form" v-show="signUpActive">
+        <form @keyup.enter="signUp">
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="signupUsername" class="validate" type="text" name="username" />
+              <label for="username" data-error="invalid username">Username</label>
+            </div>
+            <div class="input-field col s6">
+              <input id="signupFirstname" class="validate" type="text" name="firstname" />
+              <label for="firstname" data-error="invalid firstname">First name</label>
+            </div>
+            <div class="input-field col s6">
+              <input id="signupLastname" class="validate" type="text" name="lastname" />
+              <label for="lastname" data-error="invalid lastname">Last name</label>
+            </div>
+            <div class="input-field col s12">
+              <input id="signupEmail" class="validate" type="email" name="email" />
+              <label for="username" data-error="invalid email">Email</label>
+            </div>
+            <div class="input-field col s12">
+              <input id="signupPassword" class="validate" type="password" name="password">
+              <label for="password" data-error="invalid password">Password</label>
+            </div>
+            <div class="input-field col s12">
+              <input id="signupPasswordRepeat" class="validate" type="password" name="passwordRepeat">
+              <label for="passwordRepeat" data-error="password is not identical">Repeat Password</label>
+            </div>
+          </div>
+        </form>
+
+        <div class="row">
+          <div class="col s12 center">
+            <button class="btn-form-submit-col4 btn-large pink waves-effect waves-light" @click="signIn">
+              Sign Up
             </button>
           </div>
         </div>
@@ -49,6 +84,6 @@
 
 {% block script %}
 
-<script <script src="{% static 'js/user.js' %}"></script>
+<script <script src="{% static 'js/user.js' %}?"></script>
 
 {% endblock %}
