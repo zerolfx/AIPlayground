@@ -14,7 +14,8 @@ var nav = new Vue({
       problem: false,
       competition: false,
       board: false,
-      search: false
+      search: false,
+      user: false
     },
     logoTitle: LOGO_TITLE,
   },

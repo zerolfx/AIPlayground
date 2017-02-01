@@ -17,7 +17,7 @@ from django.conf import settings
 from django.conf.urls import url, include
 from django.contrib import admin
 
-from account.views import home, logout, login_view, register_view, profile_view
+from account.views import home, logout, sign_view, login_view, register_view, profile_view
 from problem.views import problist_view, problem_view
 from submission.views import submission_view, submit
 from status.views import status_view
@@ -32,7 +32,7 @@ urlpatterns = [
     url(r'^problem/$', home, name='problem'),
     url(r'^competition/', home, name='competition'),
     url(r'^board/', home, name='board'),
-    url(r'^sign/', home, name='sign'),
+    url(r'^sign/', sign_view, name='sign'),
     url(r'^user/$', home, name='user'),
     url(r'^search/$', home, name='search')
     # url(r'^problist/', problist_view, name='problist'),

@@ -12,9 +12,9 @@
         <li class="hide-on-med-and-down" :class="{active: navbarActive.competition}"><a href="{% url 'competition' %}">Competitions</a></li>
         <li class="hide-on-med-and-down" :class="{active: navbarActive.board}"><a href="{% url 'board' %}">Board</a></li>
         {% if user.is_authenticated %}
-        <li><a href="{% url 'user' %}">Username</a></li>
+        <li :class="{active: navbarActive.user}"><a href="{% url 'user' %}">Username</a></li>
         {% else %}
-        <li><a href="{% url 'sign' %}">Sign In / Sign Up</a></li>
+        <li :class="{active: navbarActive.user}"><a href="{% url 'sign' %}">Sign In / Sign Up</a></li>
         {% endif %}
       </ul>
       <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>

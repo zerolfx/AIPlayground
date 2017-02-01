@@ -63,3 +63,8 @@ def settings_security(request):
 def logout(request):
     auth_logout(request)
     return redirect('/')
+
+
+@csrf_protect
+def sign_view(request):
+    return render(request, 'sign.html')
