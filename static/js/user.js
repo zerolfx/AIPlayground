@@ -2,11 +2,29 @@
 
 nav.toggleActive('user');
 
+function clearErrorMsg() {
+  $(event.target).next("label").attr('data-error', '');
+  $(event.target).removeClass('invalid');
+}
 
 function invalidateElement(element, msg) {
   element.next("label").attr('data-error', msg);
   element.removeClass("valid");
   element.addClass("invalid");
+}
+
+function validateForm(form) {
+  var inputs = form.find("input");
+  var valid = true;
+  for (var i = 0; i < inputs.length; ++i) {
+    var input = $(inputs[i]);
+    if (input.hasClass("required") && input.val() == "") {
+      invalidateElement(input, "Required: " + input.attr('name') + ".");
+      valid = false;
+    }
+    if (input.hasClass("invalid")) valid = false;
+  }
+  return valid;
 }
 
 function passwordRepeatValidate() {
@@ -18,30 +36,18 @@ function passwordRepeatValidate() {
 }
 
 function signinValidate() {
-  var inputs = $("#sign-in-form").find("input");
-  var data = new Array();
-  for (var i = 0; i < inputs.length; ++i) {
-    var input = $(inputs[i]);
-    if (input.hasClass("required") && input.val() == "")
-      invalidateElement(input, "Required: " + input.attr('name') + ".");
-    if (input.hasClass("invalid")) return;
-    data[input.attr('name')] = input.val();
+  if (validateForm($("#sign-in-form"))) {
+    var data = $("#sign-in-form").serialize();
+    console.log(data);
   }
-  console.log(data);
 }
 
 function signupValidate() {
   if (!passwordRepeatValidate()) return;
-  var inputs = $("#sign-up-form").find("input");
-  var data = new Array();
-  for (var i = 0; i < inputs.length; ++i) {
-    var input = $(inputs[i]);
-    if (input.hasClass("required") && input.val() == "")
-      invalidateElement(input, "Required: " + input.attr('name') + ".");
-    if (input.hasClass("invalid")) return;
-    data[input.attr('name')] = input.val();
+  if (validateForm($("#sign-up-form"))) {
+    var data = $("#sign-up-form").serialize();
+    console.log(data);
   }
-  console.log(data);
 }
 
 var signContainer = new Vue({

@@ -20,12 +20,13 @@
 
       <div class="col s12 m10 offset-m1 l8 offset-l2 sign-form" v-show="signInActive">
         <form id="sign-in-form" @keyup.enter="signIn">
+          {% csrf_token %}
           <div class="input-field">
-            <input id="signinUsername" class="validate required" type="text" name="username">
+            <input onfocus="clearErrorMsg()" id="signinUsername" class="validate required" type="text" name="username">
             <label for="username" data-error="Invalid username.">Username</label>
           </div>
           <div class="input-field">
-            <input id="signinPassword" class="validate required" type="password" name="password">
+            <input onfocus="clearErrorMsg()" id="signinPassword" class="validate required" type="password" name="password">
             <label for="password" data-error="Invalid password.">Password</label>
           </div>
         </form>
@@ -41,21 +42,22 @@
 
       <div class="col s12 m10 offset-m1 l8 offset-l2 sign-form" v-show="signUpActive">
         <form id="sign-up-form" @keyup.enter="signUp">
+          {% csrf_token %}
           <div class="input-field">
-            <input id="signupUsername" class="validate required" type="text" name="username" />
+            <input onfocus="clearErrorMsg()" id="signupUsername" class="required" type="text" name="username" />
             <label for="username" data-error="Invalid username.">Username</label>
           </div>
           <div class="input-field">
-            <input id="signupEmail" class="validate" type="email" name="email" />
+            <input onfocus="clearErrorMsg()" id="signupEmail" class="required" type="email" name="email" />
             <label for="username" data-error="Invalid email.">Email</label>
           </div>
           <div class="input-field">
-            <input id="signupPassword" class="validate" type="password" name="password">
+            <input onfocus="clearErrorMsg()" id="signupPassword" class="required" type="password" name="password">
             <label for="password" data-error="Invalid password.">Password</label>
           </div>
           <div class="input-field">
-            <input @blur="passwordRepeatValidate"
-            id="signupPasswordRepeat" class="validate" type="password" name="passwordRepeat">
+            <input onfocus="clearErrorMsg()" @blur="passwordRepeatValidate"
+            id="signupPasswordRepeat" class="required" type="password" name="passwordRepeat">
             <label for="passwordRepeat" data-error="Password is not identical.">Repeat Password</label>
           </div>
         </form>

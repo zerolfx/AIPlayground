@@ -39,6 +39,23 @@ $green-lighten-2: #81c784
   color: rgba(255, 255, 255, 0.3)
 
 
+/* clear validate */
+input:not([type]) + label,
+input[type=text] + label,
+input[type=password] + label,
+input[type=email] + label,
+input[type=url] + label,
+input[type=time] + label,
+input[type=date] + label,
+input[type=datetime] + label,
+input[type=datetime-local] + label,
+input[type=tel] + label,
+input[type=number] + label,
+input[type=search] + label,
+textarea.materialize-textarea + label
+  width: 100%
+  pointer-events: none
+
 /* label focus color */
 input:not([type]):focus:not([readonly]) + label,
 input[type=text]:focus:not([readonly]) + label,
@@ -109,6 +126,23 @@ textarea.materialize-textarea:focus.valid
 /* icon prefix focus color (no change) */
 //.input-field .prefix.active
 //  color: #000
+
+input:not([type]).invalid + label:after,
+input[type=text].invalid + label:after,
+input[type=password].invalid + label:after,
+input[type=email].invalid + label:after,
+input[type=url].invalid + label:after,
+input[type=time].invalid + label:after,
+input[type=date].invalid + label:after,
+input[type=datetime].invalid + label:after,
+input[type=datetime-local].invalid + label:after,
+input[type=tel].invalid + label:after,
+input[type=number].invalid + label:after,
+input[type=search].invalid + label:after,
+textarea.materialize-textarea.invalid + label:after
+  font-size: 0.8rem
+  -webkit-transform: translateY(-140%)
+  transform: translateY(-140%)
 
 /* A inverse tab */
 .tabs
