@@ -1,43 +1,54 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
+{% block css %}
+<link href="{% static 'css/user.css' %}" rel="stylesheet">
+{% endblock %}
 {% block content %}
 <div class="section">
   <div class="container" id="sign-container">
     <nav class="transparent z-depth-0">
       <div class="nav-content">
         <ul class="tabs tabs-transparent">
-          <li class="tab"><a @click="click" :class="signInActive">Sign In</a></li>
-          <li class="tab"><a @click="click" :class="signUpActive">Sign Up</a></li>
+          <li class="tab"><a @click="toggle('in')" :class="signInActive">Sign In</a></li>
+          <li class="tab"><a @click="toggle('up')" :class="signUpActive">Sign Up</a></li>
         </ul>
       </div>
     </nav>
-    <div class="row" v-show="signInActive">
+
+    <div class="row signInActive">
       <form class="col s12 l9">
-        <div class="input-field">
-          <input id="username" type="text" class="validate">
-          <label for="username">Username or Email</label>
-        </div>
-        <div class="input-field">
-          <input id="password" type="text" class="validate">
-          <label for="password">Password</label>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="signinUsername" class="validate" type="email" name="username">
+            <label for="username">Username</label>
+          </div>
         </div>
         <div class="row">
-          <div class="col s12">
-            This is an inline input field:
-            <div class="input-field inline">
-              <input id="email" type="email" class="validate">
-              <label for="email" data-error="wrong" data-success="right">Email</label>
-            </div>
+          <div class="input-field col s12">
+            <input id="signinPassword" type="password" name="password">
+            <label for="password">Password</label>
           </div>
         </div>
       </form>
+
+      <div class="col s12 l9">
+        <div class="row">
+          <div class="col s12">
+            <button class="btn-form-submit-col4 btn-large pink waves-effect waves-light" @click="signIn">
+              Sign In
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
+
 {% endblock %}
 
 {% block script %}
 
-<script <script src="{% static 'js/user.js' %}?"></script>
+<script <script src="{% static 'js/user.js' %}"></script>
 
 {% endblock %}

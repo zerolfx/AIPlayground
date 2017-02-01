@@ -2,17 +2,31 @@
 
 nav.toggleActive('user');
 
-var sign = new Vue({
+function signinValidate() {
+  var usernameBox = $("#signinUsername");
+  var passwordBox = $("#signinPassword");
+  console.log(usernameBox.value);
+}
+
+var signContainer = new Vue({
   delimiters: ['[[', ']]'],  // resolve conflicts
   el: '#sign-container',
   data: {
-    url: 'haha',
     signInActive: true,
     signUpActive: false
   },
   methods: {
-    click: function() {
-      console.log("hello");
+    toggle: function(type) {
+      if (type == 'in') {
+        this.signInActive = true;
+        this.signUpActive = false;
+      } else {
+        this.signInActive = false;
+        this.signUpActive = true;
+      }
+    },
+    signIn: function() {
+      signinValidate();
     }
   }
-})
+});
