@@ -3,9 +3,8 @@ from .models import Problem
 import markdown2
 
 
-def problist_view(request):
-    ProblemList = Problem.objects.filter(status='a')
-    return render(request, 'problist.html', {'problem_list': ProblemList, 'problist_active': 'active'})
+def problem_feed(request):
+    return render(request, 'feed_problem.html')
 
 
 def problem_view(request, get_id):

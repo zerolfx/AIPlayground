@@ -19,7 +19,7 @@ from django.contrib import admin
 
 from user.views import logout, sign_view, login_view, register_view, profile_view
 from home.views import home_view
-from problem.views import problist_view, problem_view
+from problem.views import problem_view
 from submission.views import submission_view, submit
 from status.views import status_view
 from tests.views import vue_test
@@ -35,7 +35,7 @@ urlpatterns = [
     url(r'^login/', login_view, name='login'),
     url(r'^register/', register_view, name='register'),
     url(r'^logout/', logout, name='logout'),
-    url(r'^problem/$', home_view, name='problem'),
+    url(r'^problem/', include('problem.urls')),
     url(r'^competition/', home_view, name='competition'),
     url(r'^board/', home_view, name='board'),
     url(r'^sign/', sign_view, name='sign'),
