@@ -36,21 +36,6 @@ function passwordRepeatValidate() {
   return true;
 }
 
-function signinValidate() {
-  if (validateForm($("#sign-in-form"))) {
-    var data = $("#sign-in-form").serialize();
-    console.log(data);
-  }
-}
-
-function signupValidate() {
-  var pwdValid = passwordRepeatValidate();
-  if (validateForm($("#sign-up-form")) && pwdValid) {
-    var data = $("#sign-up-form").serialize();
-    console.log(data);
-  }
-}
-
 var signContainer = new Vue({
   delimiters: ['[[', ']]'],  // resolve conflicts
   el: '#sign-container',
@@ -69,10 +54,17 @@ var signContainer = new Vue({
       }
     },
     signIn: function() {
-      signinValidate();
+      if (validateForm($(event.target))) {
+        var data = $(event.target).serialize();
+        console.log(data);
+      }
     },
     signUp: function() {
-      signupValidate();
+      var pwdValid = passwordRepeatValidate();
+      if (validateForm($(event.target)) && pwdValid) {
+        var data = $(event.target).serialize();
+        console.log(data);
+      }
     },
     passwordRepeatValidate: function() {
       passwordRepeatValidate();

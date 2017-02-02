@@ -3,18 +3,16 @@
 {% load staticfiles %}
 {% block content %}
 <div class="section">
-  <div class="container" id="show-problem">
+  <div class="container" id="feed-problem">
+    <h2 class="feed-header">Problems</h2>
     <div class="row">
-      <nav class="transparent z-depth-0 col s12 m10 offset-m1 l8 offset-l2">
-        <div class="nav-content">
-          <ul class="tabs tabs-transparent">
-            <li class="tab"><a class="active">Description</a></li>
-            <li class="tab"><a>Board</a></li>
-            <li class="tab"><a>Ranklist</a></li>
-            <li class="tab"><a>Management</a></li>
-          </ul>
+      <form class="col s12 m9 offset-m3 l6 offset-l6" v-on:submit.prevent="search">
+        <div class="input-field">
+          <!-- TODO: add tags -->
+          <input id="search-problem" type="search" placeholder="Search for tags, names, authors...">
+          <label class="label-icon" for="search"><i class="material-icons">search</i></label>
         </div>
-      </nav>
+      </form>
     </div>
 
     <ul class="collection feed-collection">

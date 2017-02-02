@@ -10,6 +10,10 @@ $blue: #2196f3
 
 $green-lighten-2: #81c784
 
+
+/* global screen size */
+$very-small: 360px
+
 /* more text-align */
 .justify
   text-align: justify
@@ -176,16 +180,31 @@ textarea.materialize-textarea.invalid + label:not(.active):after
   color: $indigo
   font-weight: 300
 
-.collection a.collection-item
-  display: block
-  transition: .25s
-  color: rgba(0,0,0,0.87)
+.feed-collection
+  margin-top: 15px
+  margin-bottom: 60px
 
-.collection a.collection-item p
-  color: rgba(0,0,0,0.71)
+.collection li.collection-item.avatar
+  cursor: pointer
+  transition: background-color .3s
+  padding-right: 72px
+  padding-bottom: 10px
+  padding-top: 10px
+  p
+    margin-bottom: 7px
+  span
+    font-weight: 500
+  .secondary-content
+    color: $pink-lighten-1
+  /* too small */
+  @media only screen and (max-width: $very-small)
+    padding-right: 20px
+    .secondary-content
+      display: none
 
-.collection a.collection-item:not(.active):hover
-  background-color: #ddd
+.collection li.collection-item:not(.active):hover
+  background-color: #f7f7f7
 
-.collection a.collection-item .secondary-content
-  color: $pink-lighten-1
+.collection .collection-item .chip:not(.active):hover
+  background-color: #bbb
+  transition: background-color .3s
