@@ -28,13 +28,42 @@ function validateForm(form) {
   return valid;
 }
 
-function passwordRepeatValidate() {
-  if ($("#signupPasswordRepeat").val() != $("#signupPassword").val()) {
-    invalidateElement($("#signupPasswordRepeat"), "Passwords are not identical.");
-    return false;
+Vue.component('sign-input', {
+  template: '#sign-input-template',
+  props: ['placeholder', 'inputName', 'inputType', 'dataError'],
+  delimiters: ['[[', ']]'],  // resolve conflicts
+  methods: {
+    clearErrorMessage: function() {
+      console.log(this.$ref);
+      $(event.target).removeClass('invalid');
+    }
   }
-  return true;
-}
+});
+
+
+Vue.component('signin', {
+  template: '#sign-in-template',
+  methods: {
+    submit: function() {
+      if (validateForm($(event.target))) {
+        var data = $(event.target).serialize();
+        console.log(data);
+      }
+    }
+  }
+});
+
+Vue.component('signup', {
+  template: '#sign-up-template',
+  methods: {
+    submit: function() {
+      if (validateForm($(event.target))) {
+        var data = $(event.target).serialize();
+        console.log(data);
+      }
+    }
+  }
+});
 
 var signContainer = new Vue({
   delimiters: ['[[', ']]'],  // resolve conflicts
@@ -52,22 +81,6 @@ var signContainer = new Vue({
         this.signInActive = false;
         this.signUpActive = true;
       }
-    },
-    signIn: function() {
-      if (validateForm($(event.target))) {
-        var data = $(event.target).serialize();
-        console.log(data);
-      }
-    },
-    signUp: function() {
-      var pwdValid = passwordRepeatValidate();
-      if (validateForm($(event.target)) && pwdValid) {
-        var data = $(event.target).serialize();
-        console.log(data);
-      }
-    },
-    passwordRepeatValidate: function() {
-      passwordRepeatValidate();
     }
   }
 });
