@@ -9,7 +9,7 @@ function clearErrorMsg() {
 
 function invalidateElement(element, msg) {
   element.next("label").attr('data-error', msg);
-  console.log(element.next("label:after"));
+  console.log(element.next("label:after").css('width'));
   element.removeClass("valid");
   element.addClass("invalid");
 }
@@ -44,8 +44,8 @@ function signinValidate() {
 }
 
 function signupValidate() {
-  if (!passwordRepeatValidate()) return;
-  if (validateForm($("#sign-up-form"))) {
+  var pwdValid = passwordRepeatValidate();
+  if (validateForm($("#sign-up-form")) && pwdValid) {
     var data = $("#sign-up-form").serialize();
     console.log(data);
   }

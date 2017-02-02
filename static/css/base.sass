@@ -127,19 +127,19 @@ textarea.materialize-textarea:focus.valid
 //.input-field .prefix.active
 //  color: #000
 
-input:not([type]).invalid + label:after,
-input[type=text].invalid + label:after,
-input[type=password].invalid + label:after,
-input[type=email].invalid + label:after,
-input[type=url].invalid + label:after,
-input[type=time].invalid + label:after,
-input[type=date].invalid + label:after,
-input[type=datetime].invalid + label:after,
-input[type=datetime-local].invalid + label:after,
-input[type=tel].invalid + label:after,
-input[type=number].invalid + label:after,
-input[type=search].invalid + label:after,
-textarea.materialize-textarea.invalid + label:after
+input:not([type]).invalid + label:not(.active):after,
+input[type=text].invalid + label:not(.active):after,
+input[type=password].invalid + label:not(.active):after,
+input[type=email].invalid + label:not(.active):after,
+input[type=url].invalid + label:not(.active):after,
+input[type=time].invalid + label:not(.active):after,
+input[type=date].invalid + label:not(.active):after,
+input[type=datetime].invalid + label:not(.active):after,
+input[type=datetime-local].invalid + label:not(.active):after,
+input[type=tel].invalid + label:not(.active):after,
+input[type=number].invalid + label:not(.active):after,
+input[type=search].invalid + label:not(.active):after,
+textarea.materialize-textarea.invalid + label:not(.active):after
   font-size: 0.8rem
   -webkit-transform: translateY(-140%)
   transform: translateY(-140%)

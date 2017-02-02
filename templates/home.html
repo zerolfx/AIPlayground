@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
+{% load static_extra %}
 {% block content %}
 
 <div class="section no-pad-bot" id="index-banner">
@@ -92,6 +93,6 @@
 
 {% block script %}
 
-<script>writeJavascript("{% static 'js/home.js' %}")</script>
+<script src="{% static_no_cache 'js/home.js' %}"></script>
 
 {% endblock %}
