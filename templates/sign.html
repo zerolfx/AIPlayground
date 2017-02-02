@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block css %}
-<link href="{% static 'css/user.css' %}" rel="stylesheet">
+<script>writeCss("{% static 'css/user.css' %}")</script>
 {% endblock %}
 {% block content %}
 <div class="section">
@@ -79,6 +79,6 @@
 
 {% block script %}
 
-<script <script src="{% static 'js/user.js' %}"></script>
+<script>writeJavascript("{% static 'js/user.js' %}")</script>
 
 {% endblock %}

@@ -9,6 +9,7 @@ function clearErrorMsg() {
 
 function invalidateElement(element, msg) {
   element.next("label").attr('data-error', msg);
+  console.log(element.next("label:after"));
   element.removeClass("valid");
   element.addClass("invalid");
 }

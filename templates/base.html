@@ -9,11 +9,12 @@
   <title>{% if title %}{{ title }}{% else %}AI Playground{% endif %}</title>
   <!-- TODO: hard coding -->
   <link rel="icon" href="{% static 'favicon.ico' %}">
+  <script src="{% static 'js/random.js' %}"></script>
 
   <!-- CSS  -->
   <link href="https://cdn.bootcss.com/materialize/0.98.0/css/materialize.min.css" rel="stylesheet">
   <link href="https://cdn.bootcss.com/material-design-icons/3.0.1/iconfont/material-icons.min.css" rel="stylesheet">
-  <link href="{% static 'css/base.css' %}" rel="stylesheet">
+  <script>writeCss("{% static 'css/base.css' %}")</script>
   {% block css %}{% endblock %}
 
   <!-- FONT -->
@@ -35,7 +36,7 @@
   <script src="https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://cdn.bootcss.com/materialize/0.98.0/js/materialize.min.js"></script>
   <script src="https://cdn.bootcss.com/vue/2.1.10/vue.js"></script>
-  <script src="{% static 'js/init.js' %}"></script>
+  <script>writeJavascript("{% static 'js/init.js' %}")</script>
 
   <!-- Place this tag in your head or just before your close body tag. -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
