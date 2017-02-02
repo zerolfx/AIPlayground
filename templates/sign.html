@@ -28,8 +28,8 @@
 
 <template id="sign-input-template">
   <div class="input-field">
-    <input @focus="clearErrorMessage" class="validate required" :type="inputType" :name="inputName">
-    <label :for="inputName" :data-error="dataError">[[ placeholder ]]</label>
+    <input @focus="clearErrorMessage" class="validate" :type="inputType" :name="inputName" required>
+    <label :for="inputName" :data-error="errorMessage">[[ placeholder ]]</label>
   </div>
 </template>
 
@@ -41,7 +41,7 @@
       <sign-input placeholder="Password" input-name="password" input-type="password" data-error="Invalid password."></sign-input>
       <div class="row">
         <div class="col s12 center">
-          <button class="btn-large pink waves-effect waves-light">
+          <button class="btn-submit btn-large pink waves-effect waves-light">
             Sign In
           </button>
         </div>
@@ -59,7 +59,7 @@
       <sign-input placeholder="Password" input-name="password" input-type="password" data-error="Invalid password."></sign-input>
       <div class="row">
         <div class="col s12 center">
-          <button class="btn-large pink waves-effect waves-light">
+          <button class="btn-submit btn-large pink waves-effect waves-light">
             Sign Up
           </button>
         </div>

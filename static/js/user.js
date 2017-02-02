@@ -2,68 +2,58 @@
 
 nav.toggleActive('user');
 
-function clearErrorMsg() {
-  $(event.target).next("label").attr('data-error', '');
-  $(event.target).removeClass('invalid');
-}
-
-function invalidateElement(element, msg) {
-  element.next("label").attr('data-error', msg);
-  console.log(element.next("label:after").css('width'));
-  element.removeClass("valid");
-  element.addClass("invalid");
-}
-
-function validateForm(form) {
-  var inputs = form.find("input");
-  var valid = true;
-  for (var i = 0; i < inputs.length; ++i) {
-    var input = $(inputs[i]);
-    if (input.hasClass("required") && input.val() == "") {
-      invalidateElement(input, "Required: " + input.attr('name') + ".");
-      valid = false;
-    }
-    if (input.hasClass("invalid")) valid = false;
-  }
-  return valid;
-}
-
 Vue.component('sign-input', {
   template: '#sign-input-template',
   props: ['placeholder', 'inputName', 'inputType', 'dataError'],
+  data: function() {
+    return {
+      name: this.inputName,
+      errorMessage: this.dataError,
+    }
+  },
   delimiters: ['[[', ']]'],  // resolve conflicts
   methods: {
     clearErrorMessage: function() {
-      console.log(this.$ref);
       $(event.target).removeClass('invalid');
+    },
+    setError: function(name, msg) {
+      if (this.name == name) {
+        this.errorMessage = msg;
+        var el = $(this.$el).children("input");
+        el.removeClass("valid");
+        el.addClass("invalid");
+      }
     }
   }
 });
 
 
-Vue.component('signin', {
+var signinForm = {
   template: '#sign-in-template',
   methods: {
+    sendErrorMessage: function(name, msg) {
+      for (var i = 0; i < this.$children.length; ++i)
+        this.$children[i].setError(name, msg);
+    },
     submit: function() {
-      if (validateForm($(event.target))) {
-        var data = $(event.target).serialize();
-        console.log(data);
-      }
+      var data = $(event.target).serialize();
+      console.log(data);
     }
   }
-});
+};
 
-Vue.component('signup', {
+var signupForm = {
   template: '#sign-up-template',
   methods: {
+    sendErrorMessage: function(name, msg) {
+      for (var i = 0; i < this.$children.length; ++i)
+        this.$children[i].setError(name, msg);
+    },
     submit: function() {
-      if (validateForm($(event.target))) {
-        var data = $(event.target).serialize();
-        console.log(data);
-      }
+      var data = $(event.target).serialize();
     }
   }
-});
+};
 
 var signContainer = new Vue({
   delimiters: ['[[', ']]'],  // resolve conflicts
@@ -71,6 +61,10 @@ var signContainer = new Vue({
   data: {
     signInActive: true,
     signUpActive: false,
+  },
+  components: {
+    signin: signinForm,
+    signup: signupForm
   },
   methods: {
     toggle: function(type) {
