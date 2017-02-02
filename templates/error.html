@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load static_extra %}
+{% block content %}
+
+<div class="section no-pad-bot" id="index-banner">
+  <div class="container">
+    <br><br><br><br>
+    <h1 class="header center grey-text text-darken-4">{{ error_title }}</h1>
+    <div class="row center">
+      <h5 class="header col s12 light">{{ error_msg }}</h5>
+    </div>
+    <div class="row center">
+      <a href="{% url 'home' %}" class="btn-large waves-effect waves-light pink">
+        Go to homepage</a>
+    </div>
+    <br><br><br><br><br><br>
+  </div>
+</div>
+
+
+
+{% endblock %}
+
+{% block script %}
+
+<script src="{% static_no_cache 'js/home.js' %}"></script>
+
+{% endblock %}

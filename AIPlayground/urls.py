@@ -24,6 +24,11 @@ from submission.views import submission_view, submit
 from status.views import status_view
 from tests.views import vue_test
 
+handler404 = 'home.views.page_not_found_view'
+handler500 = 'home.views.error_view'
+handler403 = 'home.views.permission_denied_view'
+handler400 = 'home.views.bad_request_view'
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', home_view, name='home'),
