@@ -212,8 +212,8 @@ textarea.materialize-textarea {
   width: calc(100% - 4rem);
 
   &:focus {
-    background-color: $input-background;
-    border: 0;
+    // background-color: $input-background;
+    // border: 0;
     box-shadow: none;
     color: #444;
 

@@ -20,14 +20,14 @@
 </head>
 <body>
 
-  {% include 'navbar.html' %}
+  {% include 'components/navbar.html' %}
 
   <div id="content">
     {% block content %}
     {% endblock %}
   </div>
 
-  {% include 'footer.html' %}
+  {% include 'components/footer.html' %}
 
 
   <!--  Scripts -->
@@ -36,7 +36,7 @@
   <script src="{% static 'js/vue.js' %}"></script>
   <script src="{% static_no_cache 'js/init.js' %}"></script>
 
-  <!-- Place this tag in your head or just before your close body tag. -->
+  <!-- Place this tag in your head or just before your close body tag. For github -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   {% block script %}{% endblock %}
 

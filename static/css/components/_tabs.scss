@@ -81,7 +81,7 @@
 }
 
 // Fixed sideNav hide on smaller
-@media #{$medium-and-down} {
+/* @media #{$medium-and-down} {
   .tabs {
     display: flex;
 
@@ -94,6 +94,21 @@
       a {
         padding: 0 12px;
       }
+    }
+  }
+}*/
+
+.tabs {
+  display: flex;
+
+  .tab {
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+
+    a {
+      padding: 0 12px;
     }
   }
 }

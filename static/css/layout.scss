@@ -1,14 +1,6 @@
-/* global color */
-$pink-lighten-1: #ec407a;
-$pink: #e91e63;
-
-$indigo: #3f51b5;
-$indigo-darken-3: #283593;
-$indigo-darken-4: #1a237e;
-
-$blue: #2196f3;
-
-$green-lighten-2: #81c784;
+@import "components/mixins";
+@import "components/color";
+@import "components/variables";
 
 /* global screen size */
 $very-small: 360px;
@@ -72,15 +64,6 @@ textarea.materialize-textarea + label {
   pointer-events: none;
 }
 
-/* invalid color (no change) */
-//.input-field input[type=text].invalid
-//  border-bottom: 1px solid $pink
-//  box-shadow: 0 1px 0 0 $pink
-
-/* icon prefix focus color (no change) */
-//.input-field .prefix.active
-//  color: #000
-
 input:not([type]).invalid + label:not(.active):after,
 input[type=text].invalid + label:not(.active):after,
 input[type=password].invalid + label:not(.active):after,
@@ -100,40 +83,22 @@ textarea.materialize-textarea.invalid + label:not(.active):after {
 }
 
 /* A inverse tab */
-.tabs {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
 
-.tabs .tab {
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-}
-
-.tabs .tab a {
-  padding: 0 12px;
-}
-
-.tabs.tabs-transparent .tab a,
-.tabs.tabs-transparent .tab.disabled a,
-.tabs.tabs-transparent .tab.disabled a:hover {
-  color: rgba($indigo-darken-3, 0.7);
-}
-
-.tabs.tabs-transparent .tab a:hover,
-.tabs.tabs-transparent .tab a.active {
-  color: $indigo-darken-3;
-}
-
-.tabs.tabs-transparent .indicator {
-  background-color: $indigo-darken-3;
+.tabs.tabs-transparent.inverse {
+  .tab a, .tab.disabled a, .tab.disabled a:hover {
+    color: rgba($primary-color-dark, 0.7);
+  }
+  .tab a:hover, .tab a.active {
+    color: $primary-color-dark;
+  }
+  .indicator {
+    background-color: $primary-color-dark;
+  }
 }
 
 /* More Font */
 .container-header {
-  color: $indigo;
+  color: $primary-color;
   font-weight: 300;
 }
 
@@ -148,8 +113,8 @@ textarea.materialize-textarea.invalid + label:not(.active):after {
   cursor: pointer;
   transition: background-color 0.3s;
   padding-right: 72px;
-  padding-bottom: 10px;
-  padding-top: 10px;
+  padding-bottom: 17px;
+  padding-top: 17px;
 
   p {
     margin-bottom: 7px;
@@ -157,10 +122,6 @@ textarea.materialize-textarea.invalid + label:not(.active):after {
 
   span {
     font-weight: 500;
-  }
-
-  .secondary-content {
-    color: $pink-lighten-1;
   }
 
   /* too small */
@@ -197,4 +158,151 @@ textarea.materialize-textarea.invalid + label:not(.active):after {
 
 .input-field {
   margin-bottom: 20px;
+}
+
+
+/* post div */
+
+.problem-statement {
+  p {
+    margin: 0 0 0.8em 0 !important;
+    line-height: 1.5em;
+  }
+  .section-title {
+    font-size: 1.15em;
+    font-weight: bold;
+  }
+  .header {
+    text-align: center;
+  }
+  .header, .specification {
+    margin-bottom: 1.5em;
+  }
+  .example {
+    .examples {
+      font-family: Consolas, "Lucida Console", "Andale Mono", "Bitstream Vera Sans Mono", "Courier New",
+      "Courier", sans-serif;
+      font-size: 0.9em;
+    }
+    .input, .output {
+      border: 1px solid #888;
+    }
+    .output {
+      margin-bottom: 1em;
+      position: relative;
+      top: -1px;
+    }
+    .title {
+      font-size: 1.15em;
+      padding: 0.25em;
+      border-bottom: 1px solid #888;
+      text-transform: lowercase;
+      font-weight: bold;
+    }
+    pre {
+      line-height: 1.25em;
+      padding: 0.25em;
+      margin: 0;
+      background-color: #efefef;
+    }
+  }
+}
+
+/* tex */
+.tex-formula {
+    font-family: times new roman,sans-serif;
+    vertical-align: middle;
+    margin: 0;
+    border:medium none;
+    position: relative;
+    bottom: 2px;
+}
+
+.tex-span {
+    font-size: 125%;
+    font-family: times new roman,sans-serif;
+    white-space: nowrap;
+}
+
+.tex-font-size-tiny {
+    font-size: 70%;
+}
+
+.tex-font-size-script {
+    font-size: 75%;
+}
+
+.tex-font-size-footnotes {
+    font-size: 85%;
+}
+
+.tex-font-size-small {
+    font-size: 85%;
+}
+
+.tex-font-size-normal {
+    font-size: 100%;
+}
+
+.tex-font-size-large-1 {
+    font-size: 115%;
+}
+
+.tex-font-size-large-2 {
+    font-size: 130%;
+}
+
+.tex-font-size-large-3 {
+    font-size: 145%;
+}
+
+.tex-font-size-huge-1 {
+    font-size: 175%;
+}
+
+.tex-font-size-huge-2 {
+    font-size: 200%;
+}
+
+.tex-font-style-rm {
+}
+
+.tex-font-style-sf {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    /*font-family: arial,sans-serif;*/
+}
+
+.tex-font-style-tt {
+    font-size: 110%;
+    font-family: courier new,monospace;
+}
+
+.tex-font-style-md {
+}
+
+.tex-font-style-bf {
+    font-weight: bold;
+}
+
+.tex-font-style-up {
+}
+
+.tex-font-style-sl .tex-font-style-it  {
+    font-style: italic;
+}
+
+.tex-font-style-sc {
+    text-transform: uppercase;
+}
+
+.tex-font-style-striked {
+    text-decoration: line-through;
+}
+
+.tex-font-style-underline {
+    text-decoration: underline;
+}
+
+.tex-graphics {
+    display: block;
 }
