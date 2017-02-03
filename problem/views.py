@@ -2,9 +2,11 @@ from django.shortcuts import render
 from .models import Problem
 import markdown2
 
+CONTEXT = {'nav_problem': 'active'}
+
 
 def problem_feed(request):
-    return render(request, 'feed_problem.html')
+    return render(request, 'feed_problem.html', CONTEXT)
 
 
 # def problem_view(request, get_id):
@@ -15,5 +17,5 @@ def problem_feed(request):
 #     return render(request, 'problem.html', {'problem': problem, 'problist_active': 'active'})
 
 def problem_view(request, pid):
-    return render(request, 'problem.html')
+    return render(request, 'problem.html', CONTEXT)
 

@@ -1,6 +1,3 @@
-nav.toggleActive('problem');
-
-
 var feed = new Vue({
   delimiters: ['[[', ']]'],  // resolve conflicts
   el: '#feed-problem',
@@ -17,15 +14,33 @@ var feed = new Vue({
   }
 });
 
-Vue.component('problem-description', {
+Vue.component('description', {
   template: '#problem-description-template',
+});
+
+Vue.component('board', {
+  template: '#board-template',
+});
+
+Vue.component('ranklist', {
+  template: '#problem-ranklist-template',
+});
+
+Vue.component('management', {
+  template: '#problem-manage-template',
 });
 
 var show = new Vue({
   delimiters: ['[[', ']]'],  // resolve conflicts
   el: '#show-problem',
   data: {
+    showComponent: 'description',
   },
   methods: {
+    toggle: function(tab) {
+      this.showComponent = tab;
+      $(event.target).addClass("active");
+      $(event.target).siblings().removeClass("active");
+    }
   }
-})
+});

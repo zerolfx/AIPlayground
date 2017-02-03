@@ -62,4 +62,4 @@ def logout(request):
 
 @csrf_protect
 def sign_view(request):
-    return render(request, 'sign.html')
+    return render(request, 'sign.html', {'nav_user': 'active'})

@@ -94,6 +94,7 @@ textarea.materialize-textarea.invalid + label:not(.active):after {
   .indicator {
     background-color: $primary-color-dark;
   }
+  cursor: pointer;
 }
 
 /* More Font */
@@ -163,7 +164,8 @@ textarea.materialize-textarea.invalid + label:not(.active):after {
 
 /* post div */
 
-.problem-statement {
+.post {
+  margin-bottom: 30px;
   p {
     margin: 0 0 0.8em 0 !important;
     line-height: 1.5em;
@@ -171,42 +173,61 @@ textarea.materialize-textarea.invalid + label:not(.active):after {
   .section-title {
     font-size: 1.15em;
     font-weight: bold;
+    h1 {
+      font-size: 1.5em;
+    }
   }
   .header {
+    .title {
+      font-size: $h4-fontsize;
+      margin: ($h4-fontsize / 2) 0 ($h4-fontsize / 2.5) 0;
+    }
     text-align: center;
   }
-  .header, .specification {
+  .header, .passage {
     margin-bottom: 1.5em;
   }
-  .example {
-    .examples {
-      font-family: Consolas, "Lucida Console", "Andale Mono", "Bitstream Vera Sans Mono", "Courier New",
-      "Courier", sans-serif;
-      font-size: 0.9em;
-    }
-    .input, .output {
-      border: 1px solid #888;
-    }
-    .output {
-      margin-bottom: 1em;
-      position: relative;
-      top: -1px;
-    }
-    .title {
-      font-size: 1.15em;
-      padding: 0.25em;
-      border-bottom: 1px solid #888;
-      text-transform: lowercase;
-      font-weight: bold;
-    }
-    pre {
-      line-height: 1.25em;
-      padding: 0.25em;
-      margin: 0;
-      background-color: #efefef;
+  .examples {
+    .example {
+      font-family: "Consolas", "Lucida Console", "Andale Mono", "Bitstream Vera Sans Mono", "Courier New",
+                   "Courier", sans-serif;
+      font-size: 0.95em;
+      > div {
+        border: 1px solid #888;
+        &:not(:first-child) {
+          margin-bottom: 1em;
+          position: relative;
+          top: -1px;
+        }
+      }
+      .title {
+        font-size: 1.1em;
+        padding: 0.25em;
+        border-bottom: 1px solid #888;
+        text-transform: lowercase;
+        font-weight: bold;
+      }
+      pre {
+        line-height: 1.25em;
+        padding: 0.25em;
+        margin: 0;
+        background-color: #f7f7f7;
+        color: color("pink", "darken-3");
+      }
     }
   }
 }
+
+/* board */
+.board-menu {
+  a {
+    margin-left: 15px;
+  }
+}
+
+
+
+
 
 /* tex */
 .tex-formula {

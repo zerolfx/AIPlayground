@@ -1,7 +1,3 @@
-// included in user-related pages only
-
-nav.toggleActive('user');
-
 Vue.component('sign-input', {
   template: '#sign-input-template',
   props: ['placeholder', 'inputName', 'inputType', 'dataError'],

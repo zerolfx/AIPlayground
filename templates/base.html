@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -20,8 +21,9 @@
 </head>
 <body>
 
-  {% include 'components/navbar.html' %}
-
+  <div class="base-navbar">
+    {% include 'components/navbar.html' %}
+  </div>
   <div id="content">
     {% block content %}
     {% endblock %}
@@ -32,9 +34,9 @@
 
   <!--  Scripts -->
   <script src="{% static 'js/jquery.min.js' %}"></script>
-  <script src="{% static 'js/materialize.min.js' %}"></script>
   <script src="{% static 'js/vue.js' %}"></script>
   <script src="{% static_no_cache 'js/init.js' %}"></script>
+  <script src="{% static 'js/materialize.min.js' %}"></script>
 
   <!-- Place this tag in your head or just before your close body tag. For github -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>

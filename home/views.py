@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 
 def home_view(request):
-    return render(request, 'home.html')
+    return render(request, 'home.html', {'nav_home': 'active'})
 
 
 # The page_not_found() view is overridden by handler404:
