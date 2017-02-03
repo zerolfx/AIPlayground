@@ -4,6 +4,7 @@
 {% block content %}
 <div class="section">
   <div class="container" id="show-problem">
+    <h2 class="container-header">Timofey and a tree</h2>
     <div class="row">
       <nav class="transparent z-depth-0 col s12 m10 offset-m1 l8 offset-l2">
         <div class="nav-content">
@@ -17,10 +18,17 @@
       </nav>
     </div>
 
+    <problem-description></problem-description>
+
   </div>
 </div>
 
+<template id="problem-description-template">
+  <div class="problem-description">
+    <h2>Problem Title</h2>
 
+  </div>
+</template>
 {% endblock %}
 
 {% block script %}

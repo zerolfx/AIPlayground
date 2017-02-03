@@ -1,0 +1,31 @@
+nav.toggleActive('problem');
+
+
+var feed = new Vue({
+  delimiters: ['[[', ']]'],  // resolve conflicts
+  el: '#feed-problem',
+  data: {
+  },
+  methods: {
+    search: function() {
+      // TODO: search options
+      console.log(event.target);
+    },
+    gotoProblem: function() {
+      window.location.href = '/problem/1';
+    }
+  }
+});
+
+Vue.component('problem-description', {
+  template: '#problem-description-template',
+});
+
+var show = new Vue({
+  delimiters: ['[[', ']]'],  // resolve conflicts
+  el: '#show-problem',
+  data: {
+  },
+  methods: {
+  }
+})

@@ -1,0 +1,200 @@
+/* global color */
+$pink-lighten-1: #ec407a;
+$pink: #e91e63;
+
+$indigo: #3f51b5;
+$indigo-darken-3: #283593;
+$indigo-darken-4: #1a237e;
+
+$blue: #2196f3;
+
+$green-lighten-2: #81c784;
+
+/* global screen size */
+$very-small: 360px;
+
+/* more text-align */
+.justify {
+  text-align: justify;
+}
+
+/* more about material-icons */
+/* Rules for sizing the icon. */
+.material-icons.md-18 {
+  font-size: 18px;
+}
+
+.material-icons.md-24 {
+  font-size: 24px;
+}
+
+.material-icons.md-36 {
+  font-size: 36px;
+}
+
+.material-icons.md-48 {
+  font-size: 48px;
+}
+
+/* Rules for using icons as black on a light background. */
+.material-icons.md-dark {
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.material-icons.md-dark.md-inactive {
+  color: rgba(0, 0, 0, 0.26);
+}
+
+/* Rules for using icons as white on a dark background. */
+.material-icons.md-light {
+  color: rgba(255, 255, 255, 1);
+}
+
+.material-icons.md-light.md-inactive {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/* clear validate */
+input:not([type]) + label,
+input[type=text] + label,
+input[type=password] + label,
+input[type=email] + label,
+input[type=url] + label,
+input[type=time] + label,
+input[type=date] + label,
+input[type=datetime] + label,
+input[type=datetime-local] + label,
+input[type=tel] + label,
+input[type=number] + label,
+input[type=search] + label,
+textarea.materialize-textarea + label {
+  width: 100%;
+  pointer-events: none;
+}
+
+/* invalid color (no change) */
+//.input-field input[type=text].invalid
+//  border-bottom: 1px solid $pink
+//  box-shadow: 0 1px 0 0 $pink
+
+/* icon prefix focus color (no change) */
+//.input-field .prefix.active
+//  color: #000
+
+input:not([type]).invalid + label:not(.active):after,
+input[type=text].invalid + label:not(.active):after,
+input[type=password].invalid + label:not(.active):after,
+input[type=email].invalid + label:not(.active):after,
+input[type=url].invalid + label:not(.active):after,
+input[type=time].invalid + label:not(.active):after,
+input[type=date].invalid + label:not(.active):after,
+input[type=datetime].invalid + label:not(.active):after,
+input[type=datetime-local].invalid + label:not(.active):after,
+input[type=tel].invalid + label:not(.active):after,
+input[type=number].invalid + label:not(.active):after,
+input[type=search].invalid + label:not(.active):after,
+textarea.materialize-textarea.invalid + label:not(.active):after {
+  font-size: 0.8rem;
+  -webkit-transform: translateY(-140%);
+  transform: translateY(-140%);
+}
+
+/* A inverse tab */
+.tabs {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.tabs .tab {
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+
+.tabs .tab a {
+  padding: 0 12px;
+}
+
+.tabs.tabs-transparent .tab a,
+.tabs.tabs-transparent .tab.disabled a,
+.tabs.tabs-transparent .tab.disabled a:hover {
+  color: rgba($indigo-darken-3, 0.7);
+}
+
+.tabs.tabs-transparent .tab a:hover,
+.tabs.tabs-transparent .tab a.active {
+  color: $indigo-darken-3;
+}
+
+.tabs.tabs-transparent .indicator {
+  background-color: $indigo-darken-3;
+}
+
+/* More Font */
+.container-header {
+  color: $indigo;
+  font-weight: 300;
+}
+
+/* Feed */
+
+.feed-collection {
+  margin-top: 15px;
+  margin-bottom: 60px;
+}
+
+.collection li.collection-item.avatar {
+  cursor: pointer;
+  transition: background-color 0.3s;
+  padding-right: 72px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+
+  p {
+    margin-bottom: 7px;
+  }
+
+  span {
+    font-weight: 500;
+  }
+
+  .secondary-content {
+    color: $pink-lighten-1;
+  }
+
+  /* too small */
+  @media only screen and (max-width: $very-small) {
+    padding-right: 20px;
+
+    .secondary-content {
+      display: none;
+    }
+  }
+}
+
+.collection li.collection-item:not(.active):hover {
+  background-color: #f7f7f7;
+}
+
+.collection .collection-item .chip:not(.active):hover {
+  background-color: #bbb;
+  transition: background-color 0.3s;
+}
+
+.sign-form {
+  margin-top: 30px;
+  margin-bottom: 60px;
+}
+
+.btn-submit {
+  width: 50%;
+
+  @media only screen and (max-width: 400px) {
+    width: 80%;
+  }
+}
+
+.input-field {
+  margin-bottom: 20px;
+}
