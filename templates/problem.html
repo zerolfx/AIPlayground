@@ -17,7 +17,11 @@
       </div>
     </div>
 
-    <component :is="showComponent"></component>
+    <!-- To avoid lost data problem -->
+    <description v-show="showComponent=='description'"></description>
+    <board v-show="showComponent=='board'"></board>
+    <ranklist v-show="showComponent=='ranklist'"></ranklist>
+    <management v-show="showComponent=='management'"></management>
 
   </div>
 </div>

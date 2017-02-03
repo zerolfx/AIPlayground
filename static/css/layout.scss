@@ -219,10 +219,19 @@ textarea.materialize-textarea.invalid + label:not(.active):after {
 }
 
 /* board */
+.board {
+  position: relative;
+  padding-top: 70px;
+}
+
 .board-menu {
   a {
     margin-left: 15px;
   }
+  float: right;
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
 
