@@ -5,6 +5,11 @@
 /* global screen size */
 $very-small: 360px;
 
+/* Code style */
+$example-indicator-font-family: "Consolas", "Lucida Console", "Andale Mono", "Bitstream Vera Sans Mono",
+                                "Courier New", "Courier", sans-serif;
+$code-font-family: monospace, monospace;
+
 /* more text-align */
 .justify {
   text-align: justify;
@@ -189,8 +194,7 @@ textarea.materialize-textarea.invalid + label:not(.active):after {
   }
   .examples {
     .example {
-      font-family: "Consolas", "Lucida Console", "Andale Mono", "Bitstream Vera Sans Mono", "Courier New",
-                   "Courier", sans-serif;
+      font-family: $example-indicator-font-family;
       font-size: 0.95em;
       > div {
         border: 1px solid #888;
@@ -232,6 +236,49 @@ textarea.materialize-textarea.invalid + label:not(.active):after {
   position: absolute;
   top: 0;
   right: 0;
+}
+
+.card.avatar {
+  .card-content {
+    min-height: 84px;
+    padding-left: 72px;
+    position: relative;
+
+    .circle {
+      position: absolute;
+      width: 42px;
+      height: 42px;
+      overflow: hidden;
+      left: 15px;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    i.circle {
+      font-size: 18px;
+      line-height: 42px;
+      color: #fff;
+      background-color: #999;
+      text-align: center;
+    }
+
+    .secondary-content {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+    }
+  }
+  .input-field {
+    margin-bottom: 0;
+  }
+  .row.form-wrapper {
+    margin-bottom: 0;
+  }
+  .pre {
+    font-family: $code-font-family;
+  }
+  .card-action a {
+    cursor: pointer;
+  }
 }
 
 

@@ -18,10 +18,6 @@ Vue.component('description', {
   template: '#problem-description-template',
 });
 
-Vue.component('board', {
-  template: '#board-template',
-});
-
 Vue.component('ranklist', {
   template: '#problem-ranklist-template',
 });
