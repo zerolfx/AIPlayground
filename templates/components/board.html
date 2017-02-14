@@ -1,0 +1,74 @@
+<template id="board-template">
+<div class="board">
+  <div class="selective-chips">
+    <div class="chip">
+      important
+    </div>
+    <div class="chip">
+      submission
+    </div>
+    <div class="chip">
+      news
+    </div>
+  </div>
+  <div class="card avatar">
+    <div class="card-content">
+      <i class="material-icons circle green">edit</i>
+      <span class="card-title">Submit your solution</span>
+      <div class="row form-wrapper">
+        <form class="col s12" v-on:submit.prevent="formSubmitHelper">
+          {% csrf_token %}
+          <div class="input-field">
+            <select name="lang">
+              <option value="" disabled selected>Choose your language</option>
+              <option value="cpp">GNU G++11 4.8.4</option>
+              <option value="java">Java 1.7.0_121</option>
+              <option value="python">Python 3.4.3</option>
+            </select>
+            <label>Supporting language</label>
+          </div>
+          <label for="code">Paste your code here</label>
+          <div class="input-field">
+            <textarea v-model="submitCode" name="code" class="materialize-textarea pre" @keydown.tab.prevent="tabPrevent"></textarea>
+          </div>
+          <label>or upload your file directly</label>
+          <div class="file-field input-field">
+            <div class="btn">
+              <span>File</span>
+              <input name="file" type="file">
+            </div>
+            <div class="file-path-wrapper">
+              <input class="file-path validate" type="text">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="card-action right-align">
+      <a @click="formSubmitHelper">Submit</a>
+    </div>
+  </div>
+  <div class="card avatar">
+    <div class="card-content">
+      <i class="material-icons circle blue">chat</i>
+      <span class="card-title">Share your ideas / Report a bug</span>
+      <div class="row form-wrapper">
+        <form class="col s12" v-on:submit.prevent="formSubmitHelper">
+          {% csrf_token %}
+          <div class="input-field">
+            <textarea name="chat-text" class="materialize-textarea"></textarea>
+            <label for="chat-text">Feel free to use Markdown</label>
+          </div>
+          <p>
+            <input type="checkbox" name="owneronly" id="owneronly" />
+            <label for="owneronly">Only problem owner can see this.</label>
+          </p>
+        </div>
+      </form>
+    </div>
+    <div class="card-action right-align">
+      <a @click="formSubmitHelper">Submit</a>
+    </div>
+  </div>
+</div>
+</template>
